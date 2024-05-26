@@ -5,11 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Shoes Store</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
   </head>
   <body>
     <div class="container">
-      <div class="nav">
+      <!-- <div class="offscreen-menu">
+        <ul>
+          <li><a href="#newfeatured">New Featured</a></li>
+          <li><a href="#brand">Brand</a></li>
+          <li><a href="#sale">Sale</a></li>
+          <li><a href="#upcoming">Upcoming</a></li>
+        </ul>
+      </div> -->
+      <nav>
         <img src="Images/Logo/Group 1.png" />
+        <!-- <div class="ham-menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div> -->
         <div class="nav1">
             <ul>
               <li><a href="#newfeatured">New Featured</a></li>
@@ -22,9 +36,11 @@
             <ul>
               <li><a href="#">Login/Register</a></li>
               <div class="searchBar">
-                <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <button id="searchButton" type="button">
+                  <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M5.00305 13.2269C5.00305 8.37566 8.95055 4.42941 13.8018 4.42941C18.6518 4.42941 22.5993 8.37566 22.5993 13.2269C22.5993 18.0781 18.6518 22.0256 13.8018 22.0256C8.95055 22.0256 5.00305 18.0781 5.00305 13.2269ZM28.1218 26.3006L22.373 20.5669C24.068 18.5906 25.0993 16.0294 25.0993 13.2269C25.0993 6.99816 20.0305 1.92941 13.8018 1.92941C7.5718 1.92941 2.50305 6.99816 2.50305 13.2269C2.50305 19.4569 7.5718 24.5256 13.8018 24.5256C16.3293 24.5256 18.658 23.6806 20.5418 22.2719L26.3568 28.0706L28.1218 26.3006Z" fill="black"/>
-                    </svg>                    
+                    </svg>
+                </button>  
                 <li>
                   <form>
                     <input type="text" placeholder="Search">
@@ -42,6 +58,14 @@
                     </svg></a></li>
             </ul>
         </div>
+      </nav>
+      <div class="carousel">
+
+      </div>
+      <div class="footer">
+        <footer>
+
+        </footer>
       </div>
     </div>
   </body>
