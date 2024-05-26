@@ -1,6 +1,7 @@
-body{
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    margin: 0;
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  margin: 0;
 }
 
 .nav {
@@ -18,33 +19,58 @@ ul {
   list-style-type: none;
 }
 
-.nav1{
-    margin-left: 100px;
+.nav1 {
+  margin-left: 100px;
 }
 .nav1 ul li a {
   margin: 0 20px;
   text-decoration: none;
   color: black;
+  border-bottom: 2px solid transparent;
+  transition: border 0.5s;
+}
+.nav1 ul li a:hover {
+  transition: 0.3s;
+  border-bottom: 2px solid #1e1e1e;
+  border-radius: 1px;
+  cursor: pointer;
 }
 
-.nav2 ul li a{
-    text-decoration: none;
-    color: black;
-    margin: 0 9px;
+
+.nav2 ul li a {
+  text-decoration: none;
+  color: black;
+  margin: 0 9px;
+  border-bottom: 2px solid transparent;
+  transition: border 0.5s;
+}
+.nav2 ul li a:hover {
+  transition: 0.3s;
+  border-bottom: 2px solid #1e1e1e;
+  border-radius: 1px;
 }
 
-.nav2 svg{
-    margin-top: -4px;
+.nav2 svg {
+  margin-top: -4px;
 }
 
-.searchBar{
-    display: flex;
-    background-color: #e6e6e6;
-    border-radius: 20px;
-    padding: 10px 60px 0 0;
-    margin: -10px 0 0 20px;
+.searchBar {
+  display: flex;
+  background-color: #E9E9E9;
+  border-radius: 20px;
+  padding: 10px 0 0 0;
+  margin: -10px 0 0 20px;
 }
-.searchBar svg{
-    margin-left: 10px;
+.searchBar svg {
+  margin-left: 10px;
 }
 
+.searchBar input{
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 15px;
+  background-color: #E9E9E9;
+  color: #1e1e1e;
+  margin-top: -10px;
+  border: 0px solid transparent;
+  border-radius: 20px;
+}
