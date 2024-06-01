@@ -7,8 +7,9 @@ const shopText = document.querySelector(".shopText");
 const search = document.querySelector(".search");
 const searchText = document.querySelector(".searchText");
 
+
+//hamburger function
         hamburger.addEventListener('click', function(){
-          console.log("Hamburger menu clicked");
           hamburger.classList.toggle('hamburger-active');
           navMenu.classList.toggle('hidden');
           heartText.classList.toggle('hidden');
@@ -18,3 +19,14 @@ const searchText = document.querySelector(".searchText");
           search.classList.toggle('hidden');
           searchText.classList.toggle('hidden');
         });
+
+        window.onscroll = function(){
+          const header = document.querySelector('header');
+          const fixedNav = header.offsetTop;
+  
+          if(window.scrollY > fixedNav){
+            header.classList.add('navbar-fixed');
+          }else{
+            header.classList.remove('navbar-fixed');
+          }
+        }
