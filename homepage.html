@@ -8,12 +8,13 @@
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <script src="script.js" defer></script>
+    <script src="scriptHome.js" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
+
   </head>
-  <body class="font-rubik">
+  <body class="font-rubik"> 
     <header class="bg-transparent absolute top-0 left-0 w-full flex items-center z-10">
-      <div class="mx-auto w-full px-10 pb-4 mb-8 bg-white">
+      <div class="mx-auto w-full px-10 pb-4 mb-8 bg-white shadow-sm">
         <div class="flex items-center justify-between relative">
           <div class="flex items-center w-20">
             <img src="Images/Logo/Group 1.png" class="block pt-7" />
@@ -33,13 +34,13 @@
                   <a href="#" class="text-lg py-2 mx-8">Brand</a>
                 </li>
                 <li class="group">
-                  <a href="#" class="text-lg py-2 mx-8">Sale</a>
+                  <a href="#" class="text-lg py-2 mx-8">Review</a>
                 </li>
                 <li class="group">
-                  <a href="#" class="text-lg py-2 mx-8">Upcoming</a>
+                  <a href="#" class="text-lg py-2 mx-8">Top Rated</a>
                 </li>
                 <div class="block lg:flex lg:ml-14">
-                  <li><a href="#" class="text-lg"> Login / Register</a></li>
+                  <li><a href="login.html" class="text-lg"> Login / Register</a></li>
                   <li>
                     <form class="search">
                       <button class="absolute mt-1.5 ml-2" type="submit"><svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -58,7 +59,7 @@
                       <path d="M7.5 2.5L3.75 7.5V25C3.75 25.663 4.01339 26.2989 4.48223 26.7678C4.95107 27.2366 5.58696 27.5 6.25 27.5H23.75C24.413 27.5 25.0489 27.2366 25.5178 26.7678C25.9866 26.2989 26.25 25.663 26.25 25V7.5L22.5 2.5H7.5Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                       <path d="M3.75 7.5H26.25" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                       <path d="M20 12.5C20 13.8261 19.4732 15.0979 18.5355 16.0355C17.5979 16.9732 16.3261 17.5 15 17.5C13.6739 17.5 12.4021 16.9732 11.4645 16.0355C10.5268 15.0979 10 13.8261 10 12.5" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg><p class="shopText hidden">Your Cart</p></a></li>
+                      </svg><p class="shopText hidden">Wish List</p></a></li>
                 </div>
               </ul>
             </nav>
@@ -67,8 +68,69 @@
         </div>
       </div>
     </header>
+    
+    <div id="default-carousel" class="relative w-full" data-carousel="slide">
+      <div class="relative h-[35rem] overflow-hidden rounded-lg lg:h-[76rem]">
+          <div class="hidden duration-700 ease-in-out" id="carousel-item1" data-carousel-item>
+              <a href="#"><img src="Images/Photos/Red Nike Shoes.jpeg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="Red Nike Shoes"></a>
+          </div>
+          <div class="hidden duration-700 ease-in-out" id="carousel-item2" data-carousel-item>
+            <a href="#"><img src="Images/Photos/Brownish Nike Shoes.jpeg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="Brownish Nike Shoes"></a>
+          </div>
+          <div class="hidden duration-700 ease-in-out" id="carousel-item3" data-carousel-item>
+              <a href="#"><img src="Images/Photos/White Shoes.jpeg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="White Shoes"></a>
+          </div>
+          <div class="hidden duration-700 ease-in-out" id="carousel-item4" data-carousel-item>
+            <a href="#"><img src="Images/Photos/Gray Shoes.jpeg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="Gray Shoes"></a>
+          </div>
+          <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
+            <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
+            <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
+            <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
+            <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
+        </div>
+      </div>
+
+    <!-- buat bikin brand -->
     <section>
-      
+      <div class="container mx-auto">
+        <div>
+        </div>
+        <div class="grid-container grid grid-cols-5 gap-5">
+          <div class="card rounded-md shadow-lg">
+            <a href="#"><img src ="https://images.unsplash.com/photo-1628413993904-94ecb60f1239?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fG5pa2V8ZW58MHx8MHx8fDA%3D"></a>
+            <div class="card-content m-4">
+              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet facilis rem esse?</p>
+            </div>
+          </div>
+          <div class="card rounded-md shadow-lg">
+            <a href="#"><img src ="https://images.unsplash.com/photo-1628413993904-94ecb60f1239?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fG5pa2V8ZW58MHx8MHx8fDA%3D"></a>
+            <div class="card-content m-4">
+              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet facilis rem esse?</p>
+            </div>
+          </div>
+          <div class="card rounded-md shadow-lg">
+            <a href="#"><img src ="https://images.unsplash.com/photo-1628413993904-94ecb60f1239?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fG5pa2V8ZW58MHx8MHx8fDA%3D"></a>
+            <div class="card-content m-4">
+              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet facilis rem esse?</p>
+            </div>
+          </div>
+          <div class="card rounded-md shadow-lg">
+            <a href="#"><img src ="https://images.unsplash.com/photo-1628413993904-94ecb60f1239?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fG5pa2V8ZW58MHx8MHx8fDA%3D"></a>
+            <div class="card-content m-4">
+              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet facilis rem esse?</p>
+            </div>
+          </div>
+          <div class="card rounded-md shadow-lg">
+            <a href="#"><img src ="https://images.unsplash.com/photo-1628413993904-94ecb60f1239?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fG5pa2V8ZW58MHx8MHx8fDA%3D"></a>
+            <div class="card-content m-4">
+              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet facilis rem esse?</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
+    
+
   </body>
 </html>
