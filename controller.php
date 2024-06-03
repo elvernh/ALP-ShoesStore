@@ -23,7 +23,7 @@ function LoginRegister(){
             
             if ($email) {
                 // Registration process
-                $email = $_POST("email");
+                $email = $_POST["email"];
                 $username = $_POST["username"];
                 $password = $_POST["password"];
                 $duplicate = mysqli_query($conn, "SELECT * FROM users WHERE username = '$username' OR email = '$email'");
@@ -32,7 +32,7 @@ function LoginRegister(){
                 }else{
                     $query = "INSERT INTO users VALUES ('','$email','$username','$password', '');";
                     mysqli_query($conn, $query);
-                    echo "<script>alert('Registration Successful!);</script>";
+                    echo "<script>alert('Registration Successfull!');</script>";
                 }
             } else {
                 $username = $_POST["username"];
@@ -43,10 +43,11 @@ function LoginRegister(){
                     if($password == $row["password"]){
                         $_SESSION["login"] = true;
                         $_SESSION["user_id"] = $row["user_id"];
-                        echo "<script>alert('Login Successfull!')</script>";
+                        echo "<script>alert('Login Successfull!');</script>";
                     }
                 }else{
-                    echo "<script>alert('Password Does Not Match)</script>";
+                    echo "<script>alert('Password Does Not Match);</script>";
+                
                 }
             }
         }
