@@ -1,6 +1,8 @@
-<?php
+<!-- <?php
 include_once("controller.php");
-?>
+session_start();
+LoginRegister();
+?> -->
 
 
 <!DOCTYPE html>
@@ -58,7 +60,7 @@ include_once("controller.php");
               <path d="M30.3131 27.7607C35.8937 27.7607 40.4176 23.2411 40.4176 17.6659C40.4176 12.0907 35.8937 7.57109 30.3131 7.57109C24.7326 7.57109 20.2087 12.0907 20.2087 17.6659C20.2087 23.2411 24.7326 27.7607 30.3131 27.7607Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </span>
-          <input class="w-full pl-10 pr-4 py-2 border-none rounded-lg focus:outline-none focus:border-gray-500" type="text" id="loginUsername" placeholder="Username">
+          <input class="w-full pl-10 pr-4 py-2 border-none rounded-lg focus:outline-none focus:border-gray-500" name="name" type="text" id="loginUsername" placeholder="Username">
         </div>
       </div>
       <div class="mb-4">
@@ -91,7 +93,7 @@ include_once("controller.php");
               </svg>
               
           </span>
-          <input class="w-full pl-10 pr-4 py-2 border-none rounded-lg focus:outline-none focus:border-gray-500" type="email" id="email" placeholder="Email address">
+          <input class="w-full pl-10 pr-4 py-2 border-none rounded-lg focus:outline-none focus:border-gray-500" name="email" type="email" id="email" placeholder="Email address">
         </div>
       </div>
       <div class="mb-4">
@@ -103,7 +105,7 @@ include_once("controller.php");
               <path d="M30.3131 27.7607C35.8937 27.7607 40.4176 23.2411 40.4176 17.6659C40.4176 12.0907 35.8937 7.57109 30.3131 7.57109C24.7326 7.57109 20.2087 12.0907 20.2087 17.6659C20.2087 23.2411 24.7326 27.7607 30.3131 27.7607Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </span>
-          <input class="w-full pl-10 pr-4 py-2 border-none rounded-lg focus:outline-none focus:border-gray-500" type="text" id="registerUsername" placeholder="Username">
+          <input class="w-full pl-10 pr-4 py-2 border-none rounded-lg focus:outline-none focus:border-gray-500" name="username" type="text" id="registerUsername" placeholder="Username">
         </div>
       </div>
       <div class="mb-4">
@@ -115,10 +117,10 @@ include_once("controller.php");
               <path d="M17.6826 27.7607V17.6659C17.6826 14.3193 19.0133 11.1097 21.382 8.74326C23.7507 6.37684 26.9633 5.04739 30.3131 5.04739C33.6629 5.04739 36.8756 6.37684 39.2442 8.74326C41.6129 11.1097 42.9436 14.3193 42.9436 17.6659V27.7607" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </span>
-          <input class="w-full pl-10 pr-4 py-2 border-none rounded-lg focus:outline-none focus:border-gray-500" type="password" id="registerPassword" placeholder="Password">
+          <input class="w-full pl-10 pr-4 py-2 border-none rounded-lg focus:outline-none focus:border-gray-500" name="password" type="password" id="registerPassword" placeholder="Password">
         </div>
       </div>
-      <button class="w-full py-2 text-center text-white bg-gradient-to-r from-gray-400 to-black rounded-lg">Register</button>
+      <button class="w-full py-2 text-center text-white bg-gradient-to-r from-gray-400 to-black rounded-lg" name="submit">Register</button>
       <div class="text-center m-4">
         <a class="text-gray-500" href="#" onclick="toggleForm('login')">Already have an account? <span class="text-stone-300">Login</span></a>
       </div>
