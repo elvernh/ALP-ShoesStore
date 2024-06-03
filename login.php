@@ -1,8 +1,8 @@
-<!-- <?php
+<?php
 include_once("controller.php");
 session_start();
 LoginRegister();
-?> -->
+?>
 
 
 <!DOCTYPE html>
