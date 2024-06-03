@@ -47,7 +47,7 @@ function LoginRegister(){
                     }
                 }else{
                     echo "<script>alert('Password Does Not Match);</script>";
-                
+                    // tes
                 }
             }
         }
