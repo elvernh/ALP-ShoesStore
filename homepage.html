@@ -14,7 +14,7 @@
   </head>
   <body class="font-rubik"> 
     <header class="bg-transparent absolute top-0 left-0 w-full flex items-center z-10">
-      <div class="mx-auto w-full px-10 pb-4 mb-8 bg-white shadow-sm">
+      <div class="mx-auto w-full px-10 pb-6 mb-8 bg-gray-50 border-b-2">
         <div class="flex items-center justify-between relative">
           <div class="flex items-center w-20">
             <img src="Images/Logo/Group 1.png" class="block pt-7" />
@@ -47,7 +47,7 @@
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M5.00305 13.2269C5.00305 8.37566 8.95055 4.42941 13.8018 4.42941C18.6518 4.42941 22.5993 8.37566 22.5993 13.2269C22.5993 18.0781 18.6518 22.0256 13.8018 22.0256C8.95055 22.0256 5.00305 18.0781 5.00305 13.2269ZM28.1218 26.3006L22.373 20.5669C24.068 18.5906 25.0993 16.0294 25.0993 13.2269C25.0993 6.99816 20.0305 1.92941 13.8018 1.92941C7.5718 1.92941 2.50305 6.99816 2.50305 13.2269C2.50305 19.4569 7.5718 24.5256 13.8018 24.5256C16.3293 24.5256 18.658 23.6806 20.5418 22.2719L26.3568 28.0706L28.1218 26.3006Z" fill="black"/>
                         </svg>
                         </button>
-                      <input type="text" placeholder="Search" class="w-17 py-2 pl-12 pr-7 bg-gray-100 placeholder-black rounded-full outline-none">
+                      <input type="text" placeholder="Search" class="w-17 py-2 pl-12 pr-7 outline-stone-800 bg-gray-100 placeholder-black rounded-full outline-none">
                     </form>
                     <a href="#"><p class="searchText hidden">Search</p></a>
                   </li>
@@ -69,37 +69,60 @@
       </div>
     </header>
 
-    <div id="default-carousel" class="relative w-full" data-carousel="slide">
-      <div class="relative h-[30rem] overflow-hidden rounded-lg lg:h-[76rem]">
-          <div class="hidden duration-700 ease-in-out" id="carousel-item1" data-carousel-item>
-              <a href="#"><img src="Images/Photos/Red Nike Shoes.jpeg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="Red Nike Shoes"></a>
+    <section id="home" class="pt-36 pb-10 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-wrap items-center">
+          <div class="w-full self-center px-4 lg:w-1/2">
+            <img class="drop-shadow-2xl" src="Images/Photos/pngegg-2.png">
           </div>
-          <div class="hidden duration-700 ease-in-out" id="carousel-item2" data-carousel-item>
-            <a href="#"><img src="Images/Photos/Brownish Nike Shoes.jpeg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="Brownish Nike Shoes"></a>
+          <div class="w-full self-center px-4 lg:w-1/2">
+            <div class="relative mt-10 lg:mt-9 lg:right-0">
+              <h1 class="text-3xl font-semibold">Discover insightful reviews for your favorite shoes from fellow users, available anytime, anywhere.</h1>
+              <p class="my-10">Easily access comprehensive online reviews to make informed purchasing decisions and find the perfect pair for every occasion.</p>
+              <div class="flex">
+                <button class="rounded-full border-2 border-stone-900 px-6 py-[10px]">Review Now</button>
+              </div>
+            </div>
           </div>
-          <div class="hidden duration-700 ease-in-out" id="carousel-item3" data-carousel-item>
-              <a href="#"><img src="Images/Photos/White Shoes.jpeg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="White Shoes"></a>
-          </div>
-          <div class="hidden duration-700 ease-in-out" id="carousel-item4" data-carousel-item>
-            <a href="#"><img src="Images/Photos/Gray Shoes.jpeg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="Gray Shoes"></a>
-          </div>
-          <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
-            <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
-            <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
-            <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
-            <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
         </div>
       </div>
+    </section>
 
-      <div class="flex ml-10">
-        <h1 class="text-2xl lg:text-3xl">Brand</h1>
+    <section id="slider" class="pt-20">
+      <div class="container mx-auto px-8 relative lg:px-4">
+        <h2 class="text-2xl font-bold mb-4">New Reviews</h2>
+        <div class="wrapper max-h-[220px] flex overflow-x-auto lg:max-h-[520px]">
+          <div class="item  min-w-[200px] h-[200px] align-center bg-white border-2 mx-2 lg:min-w-[500px] lg:h-[500px]">
+            <img class="h-full" src="">
+          </div>
+          <div class="item  min-w-[200px] h-[200px] align-center bg-white border-2 mx-2 lg:min-w-[500px] lg:h-[500px]">
+            <a href="#"><img class="h-full" src=""></a>
+          </div>
+          <div class="item  min-w-[200px] h-[200px] align-center bg-white border-2 mx-2 lg:min-w-[500px] lg:h-[500px]">
+            <a href="#"><img class="h-full" src=""></a>
+          </div>
+          <div class="item  min-w-[200px] h-[200px] align-center bg-white border-2 mx-2 lg:min-w-[500px] lg:h-[500px]">
+            <a href="#"><img class="h-full" src=""></a>
+          </div>
+          <div class="item  min-w-[200px] h-[200px] align-center bg-white border-2 mx-2 lg:min-w-[500px] lg:h-[500px]">
+            <a href="#"><img class="h-full" src=""></a>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <footer class="bg-red-500 pt-5 pb-12 shadow-lg">
-        <div class="container mx-auto px-4 flex flex-wrap">
-          <h1>Contact Us!</h1>
+    <section class="pt-36">
+
+    </section>
+
+    <footer class="bg-gray-100 pt-12 pb-24 border-t-2">
+      <div class="container mx-auto px-4 flex flex-wrap ">
+        <div class="block text-center flex-wrap mx-auto">
+          <h1 class="text-2xl font-semibold my-2">No Air Jordan</h1>
+          <p><a class="mx-2" href="#">Terms & Condition</a>|<a class="mx-2" href="#">Contact Us</a></p>
+          <p class="mt-20 flex items-center justify-center text-stone-900">©2024 NoAirJordan Developer Team</p>
         </div>
-        </div>
-      </footer>
+      </div>
+    </footer>
   </body>
 </html>

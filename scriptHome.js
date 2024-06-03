@@ -32,41 +32,29 @@ window.onscroll = function(){
   }
 }
 
+const sliderItems = document.getElementById('slider-items');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
 
-const carouselItems = document.querySelectorAll('[data-carousel-item]');
-const indicators = document.querySelectorAll('[data-carousel-slide-to]');
-let currentIndex = 0;
-const totalItems = carouselItems.length;
+    let currentIndex = 0;
+    const itemCount = sliderItems.children.length;
 
-function showSlide(index) {
-  carouselItems.forEach((item, idx) => {
-    if (idx === index) {
-      item.classList.remove('hidden');
-    } else {
-      item.classList.add('hidden');
+    function updateSlider() {
+      const offset = -currentIndex * (100 / 3); // Assuming 3 items visible at a time
+      sliderItems.style.transform = `translateX(${offset}%)`;
     }
-  });
 
-  indicators.forEach((indicator, idx) => {
-    if (idx === index) {
-      indicator.setAttribute('aria-current', 'true');
-    } else {
-      indicator.setAttribute('aria-current', 'false');
-    }
-  });
-}
+    prevBtn.addEventListener('click', function () {
+      currentIndex = (currentIndex > 0) ? currentIndex - 1 : itemCount - 3; // Loop back to the end
+      updateSlider();
+    });
 
-function nextSlide() {
-  currentIndex = (currentIndex + 1) % totalItems;
-  showSlide(currentIndex);
-}
+    nextBtn.addEventListener('click', function () {
+      currentIndex = (currentIndex < itemCount - 3) ? currentIndex + 1 : 0; // Loop back to the start
+      updateSlider();
+    });
 
-showSlide(currentIndex);
-setInterval(nextSlide, 4500);
-
-indicators.forEach((indicator, idx) => {
-  indicator.addEventListener('click', () => {
-    currentIndex = idx;
-    showSlide(currentIndex);
-  });
-});
+    // Optional: Auto-slide functionality
+    setInterval(() => {
+      nextBtn.click();
+    }, 5000);
