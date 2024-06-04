@@ -45,9 +45,6 @@ cekLogin();
                 <li class="group">
                   <a href="#" class="text-lg py-2 mx-8">My Review</a>
                 </li>
-                <li class="group">
-                  <a href="#" class="text-lg py-2 mx-8">Delete Review</a>
-                </li>
                 <div class="block lg:flex lg:ml-14">
               
                   <?php

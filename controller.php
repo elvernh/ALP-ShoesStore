@@ -38,21 +38,20 @@ function LoginRegister()
                     mysqli_query($conn, $query);
                     echo "<script>alert('Registration Successfull!');</script>";
                 }
-            } else {
-                // Login process
-                $username = $_POST["username"];
-                $password = $_POST["password"];
-                $result = mysqli_query($conn, "SELECT * FROM users WHERE username = '$username'");
-                $row = mysqli_fetch_array($result);
-                if (mysqli_num_rows($result) > 0) {
-                    if ($password == $row["password"]) {
-                        $_SESSION["login"] = true;
-                        $_SESSION["user_id"] = $row["user_id"];
-                        echo "<script>alert('Login Successfull!');</script>";
-                        header("Location: homepage.php");
-                    } else {
-                        echo "<script>alert('Password Does Not Match');</script>";
-                    }
+            } 
+        }else {
+            // Login process
+            $username = $_POST["username"];
+            $password = $_POST["password"];
+            $result = mysqli_query($conn, "SELECT * FROM users WHERE username = '$username'");
+            $row = mysqli_fetch_array($result);
+            if (mysqli_num_rows($result) > 0) {
+                if ($password == $row["password"]) {
+                    $_SESSION["login"] = true;
+                    $_SESSION["user_id"] = $row["user_id"];
+                    echo "<script>alert('Login Successfull!');</script>";
+                    header("Location: homepage.php");
+                    echo "<script>alert('Password Does Not Match');</script>";
                 }
             }
         }
