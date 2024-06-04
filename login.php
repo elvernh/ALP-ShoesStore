@@ -50,7 +50,7 @@ LoginRegister();
     </div>
 
     <!-- Login Form -->
-    <form id="loginForm" class="m-4 hidden" method="post">
+    <form id="loginForm" class="m-4 hidden" action="homepage.php" method="post">
       <div class="mb-4">
         <label class="sr-only" for="loginUsername">Username</label>
         <div class="relative border border-gray-300 rounded-lg">
