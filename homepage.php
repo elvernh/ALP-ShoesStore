@@ -48,7 +48,7 @@ cekLogin();
                 <div class="block lg:flex lg:ml-14">
               
                   <?php
-                  if(isset($_SESSION['user'])) {
+                  if(isset($_SESSION['username'])) {
                     echo '<li><a href="logout.php" class="text-lg">Logout</a></li>';
                   }else{
                     echo '<li><a href="login.php" class="text-lg">Login/Register</a></li>';
