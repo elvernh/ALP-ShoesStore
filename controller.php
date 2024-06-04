@@ -98,6 +98,10 @@ function getAllReview(){
 }
 
 function addshoes($shoesname, $shoesbrand, $shoesprice, $shoesimage){
+
+
+
+    
     $conn = bukaKoneksiDB();
     $sql = "INSERT INTO shoes VALUES ('','$shoesname','$shoesbrand','$shoesprice','$shoesimage')";
     mysqli_query($conn, $sql);
