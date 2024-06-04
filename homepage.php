@@ -3,7 +3,6 @@
 require 'controller.php';
 include_once("controller.php");
 session_start();
-cekLogin();
 ?>
 
 <!DOCTYPE html>
@@ -36,8 +35,11 @@ cekLogin();
             </button>
             <nav id="nav-menu" class="hidden absolute py-5 bg-white shadow-lg rounded-lg max-w-[250px] w-full top-full right-4 lg:flex lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none">
               <ul class="navUl block lg:flex lg:mt-8 lg:mx-auto">
+              <li class="group">
+                  <a href="homepage.php" class="text-lg py-2 mx-8">Home</a>
+                </li>
                 <li class="group">
-                  <a href="#featured" class="text-lg py-2 mx-8">Add Review</a>
+                  <a href="addreview.php" class="text-lg py-2 mx-8">Add Review</a>
                 </li>
                 <li class="group">
                   <a href="#" class="text-lg py-2 mx-8">Brand</a>
@@ -49,12 +51,11 @@ cekLogin();
               
                   <?php
                   if(isset($_SESSION['username'])) {
-                    echo '<li><a href="logout.php" class="text-lg">Logout</a></li>';
+                    echo '<li><a href="logout.php" class="text-lg">Log Out</a></li>';
                   }else{
                     echo '<li><a href="login.php" class="text-lg">Login/Register</a></li>';
-                  }
+                  }                  
                   ?>
-                  
                   <li>
                     <form class="search">
                       <button class="absolute mt-1.5 ml-2" type="submit"><svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -105,20 +106,20 @@ cekLogin();
     <section id="slider" class="pt-20">
       <div class="container mx-auto px-8 relative lg:px-4">
         <h2 class="text-2xl font-bold mb-4">New Reviews</h2>
-        <div class="wrapper max-h-[220px] flex overflow-x-auto lg:max-h-[520px]">
-          <div class="item  min-w-[200px] h-[200px] align-center bg-white border-2 mx-2 lg:min-w-[500px] lg:h-[500px]">
+        <div class="wrapper snap-x max-h-[220px] flex overflow-x-auto lg:max-h-[520px]">
+          <div class="item snap-center min-w-[200px] h-[200px] align-center bg-white border-2 mx-2 lg:min-w-[500px] lg:h-[500px]">
             <img class="h-full" src="">
           </div>
-          <div class="item  min-w-[200px] h-[200px] align-center bg-white border-2 mx-2 lg:min-w-[500px] lg:h-[500px]">
+          <div class="item snap-center min-w-[200px] h-[200px] align-center bg-white border-2 mx-2 lg:min-w-[500px] lg:h-[500px]">
             <a href="#"><img class="h-full" src=""></a>
           </div>
-          <div class="item  min-w-[200px] h-[200px] align-center bg-white border-2 mx-2 lg:min-w-[500px] lg:h-[500px]">
+          <div class="item snap-center min-w-[200px] h-[200px] align-center bg-white border-2 mx-2 lg:min-w-[500px] lg:h-[500px]">
             <a href="#"><img class="h-full" src=""></a>
           </div>
-          <div class="item  min-w-[200px] h-[200px] align-center bg-white border-2 mx-2 lg:min-w-[500px] lg:h-[500px]">
+          <div class="item snap-center min-w-[200px] h-[200px] align-center bg-white border-2 mx-2 lg:min-w-[500px] lg:h-[500px]">
             <a href="#"><img class="h-full" src=""></a>
           </div>
-          <div class="item  min-w-[200px] h-[200px] align-center bg-white border-2 mx-2 lg:min-w-[500px] lg:h-[500px]">
+          <div class="item snap-center min-w-[200px] h-[200px] align-center bg-white border-2 mx-2 lg:min-w-[500px] lg:h-[500px]">
             <a href="#"><img class="h-full" src=""></a>
           </div>
         </div>
@@ -132,9 +133,9 @@ cekLogin();
     <footer class="bg-gray-100 pt-12 pb-24 border-t-2">
       <div class="container mx-auto px-4 flex flex-wrap ">
         <div class="block text-center flex-wrap mx-auto">
-          <h1 class="text-2xl font-semibold my-2">No Air Jordan</h1>
+          <h1 class="text-2xl font-semibold my-2">No Air Forces</h1>
           <p><a class="mx-2" href="#">Terms & Condition</a>|<a class="mx-2" href="#">Contact Us</a></p>
-          <p class="mt-20 flex items-center justify-center text-stone-900">©2024 NoAirJordan Developer Team</p>
+          <p class="mt-20 flex items-center justify-center text-stone-900">©2024 NoAirForces Developer Team</p>
         </div>
       </div>
     </footer>

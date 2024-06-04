@@ -1,5 +1,8 @@
-
-
+<?php
+require 'controller.php';
+session_start();
+cekLogin();
+?>
 
 
 
@@ -33,6 +36,9 @@
             </button>
             <nav id="nav-menu" class="hidden absolute py-5 bg-white shadow-lg rounded-lg max-w-[250px] w-full top-full right-4 lg:flex lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none">
               <ul class="navUl block lg:flex lg:mt-8 lg:mx-auto">
+              <li class="group">
+                  <a href="homepage.php" class="text-lg py-2 mx-8">Home</a>
+                </li>
                 <li class="group">
                   <a href="#featured" class="text-lg py-2 mx-8">Add Review</a>
                 </li>
@@ -44,11 +50,12 @@
                 </li>
                 <div class="block lg:flex lg:ml-14">
                 <?php
-                  if(isset($_SESSION['user'])) {
-                    echo '<li><a href="logout.php" class="text-lg">Logout</a></li>';
+                  if(isset($_SESSION['username'])) {
+                    echo '<li><a href="logout.php" class="text-lg">Log Out</a></li>';
                   }else{
                     echo '<li><a href="login.php" class="text-lg">Login / Register</a></li>';
                   }
+                  
                   ?>                 
                    <li>
                     <form class="search">
@@ -79,41 +86,29 @@
 
     </header>
     <!-- Review Section -->
-    
 <div class="container mx-auto p-6">
     <div class="flex justify-between items-center bg-white p-6 rounded-lg shadow-lg">
-        <div class="w-1/2 pt-36">
-            <img src="https://image-cdn.hypb.st/https%3A%2F%2Fhypebeast.com%2Fimage%2F2021%2F11%2Fnike-kyrie-8-keep-sue-fresh-DC9134-002-release-date-0.jpg?w=960&cbr=1&q=90&fit=max" alt="Nike Kyrie 8" class="w-full h-auto">
-        </div>
+        <div class="w-1/2 pt-42">
+        <h1 class="text-3xl font-bold mb-4">Add Review</h1>
+                    <form action="upload.php" method="POST" enctype="multipart/form-data">
+                      <label for="image" class="block text-lg font-medium text-gray-700">Upload Image:</label>
+                      <input type="file" id="image" name="image" class="mt-2 p-2 w-full border border-gray-300 rounded-lg">
+                      <button type="submit" class="mt-4 bg-gray-300 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-400">Upload</button>
+                    </form>
+                  </div>
         <div class="w-1/2 pl-6">
+            
             <h2 class="text-2xl font-bold">Nike Kyrie 8<br>"Keep Sue Fresh"</h2>
-            <form class="mt-4">
+            <form class="mt-14">
+                <label for="shoename" class="block text-lg font-medium text-gray-700">Shoe name:</label>
+                <input type="text" id="shoename" name="shoename" class="mt-2 p-2 w-full border border-gray-300 rounded-lg">
+                <label for="brand" class="block text-lg font-medium text-gray-700 mt-4">Brand:</label>
+                <input type="text" id="brand" name="brand" class="mt-2 p-2 w-full border border-gray-300 rounded-lg">
+
                 <label for="review" class="block text-lg font-medium text-gray-700">Write your review:</label>
                 <textarea id="review" name="review" rows="5" class="mt-2 p-2 w-full border border-gray-300 rounded-lg"></textarea>
                 <button type="submit" class="mt-4 bg-gray-300 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-400">Post</button>
             </form>
-        </div>
-    </div>
-
-    <div class="mt-8 bg-gray-200 p-6 rounded-lg">
-        <h3 class="text-xl font-bold mb-4">Previous reviewers:</h3>
-        <div class="space-y-6">
-            <div class="flex items-center bg-white p-4 rounded-lg shadow">
-                <div class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center">
-                    <span class="text-sm font-medium text-gray-700">USERNAME</span>
-                </div>
-                <div class="ml-4 flex-1">
-                    <p class="text-gray-700">User review content goes here.</p>
-                </div>
-            </div>
-            <div class="flex items-center bg-white p-4 rounded-lg shadow">
-                <div class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center">
-                    <span class="text-sm font-medium text-gray-700">USERNAME</span>
-                </div>
-                <div class="ml-4 flex-1">
-                    <p class="text-gray-700">User review content goes here.</p>
-                </div>
-            </div>
         </div>
     </div>
 </div>

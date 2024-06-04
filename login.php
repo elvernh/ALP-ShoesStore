@@ -2,7 +2,6 @@
 require 'controller.php';
 session_start();
 LoginRegister();
-
 ?>
 
 
@@ -129,3 +128,4 @@ LoginRegister();
     </form>
 </body>
 </html>
+

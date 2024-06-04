@@ -21,12 +21,15 @@ function LoginRegister()
     if (!empty($_SESSION["user_id"])) {
         header("Location: homepage.php");
     }
+
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (isset($_POST['username']) && isset($_POST['password'])) {
+            // echo "<script>alert('form input masuk!');</script>";
             $username = $_POST['username'];
             $password = $_POST['password'];
             $email = isset($_POST['email']) ? $_POST['email'] : null;
             if ($email) {
+                // echo "<script>alert('orang e register!');</script>";
                 $email = $_POST['email'];
                 $username = $_POST['username'];
                 $password = $_POST['password'];
@@ -36,27 +39,30 @@ function LoginRegister()
                 } else {
                     $query = "INSERT INTO users VALUES ('','$email','$username','$password', '');";
                     mysqli_query($conn, $query);
-                    echo "<script>alert('Registration Successfull!');</script>";
+                    echo "<script>alert('Registration Successful!');</script>";
                 }
             } else {
                 // Login process
+                // echo "<script>alert('masuk ke login controller !');</script>";
                 $username = $_POST["username"];
                 $password = $_POST["password"];
                 $result = mysqli_query($conn, "SELECT * FROM users WHERE username = '$username'");
                 $row = mysqli_fetch_array($result);
                 if (mysqli_num_rows($result) > 0) {
-                    if ($password == $row["password"]) {
+                    // echo "<script>alert('mysqli num rows ada lebih dari 0 !');</script>";
+                    if ($_POST["password"] == $row["password"]) {
+                        // echo "<script>alert('password row ada!');</script>";
                         $_SESSION["login"] = true;
                         $_SESSION["user_id"] = $row["user_id"];
-                        echo "<script>alert('Login Successfull!');</script>";
-                        header("Location: homepage.php");
+                        $_SESSION["username"] = $row["username"];
+                        echo "<script>alert('Login Successful!');</script>"; 
+                        // header("Location: homepage.php");
+                        echo "<script>window.location.href=('homepage.php')</script>";
                     } else {
                         echo "<script>alert('Password Does Not Match');</script>";
                     }
                 }
             }
-        }else{
-            
         }
         tutupKoneksiDB($conn);
     }
@@ -70,6 +76,30 @@ function cekLogin()
         $id = $_SESSION["user_id"];
         $result = mysqli_query($conn, "SELECT * FROM users WHERE user_id = $id");
         $row = mysqli_fetch_assoc($result);
+    } else {
+        header("Location: login.php");
     }
+    tutupKoneksiDB($conn);
+}
+
+function startconnect(){
+    $conn = bukaKoneksiDB();
+    $conn;
+    return $conn;
+}
+
+
+function getAllReview(){
+    $conn = bukaKoneksiDB();
+    $sql = "SELECT * FROM shoes, review WHERE shoes.shoes_id = review.shoes_id";
+    $result = mysqli_query($conn, $sql);
+    tutupKoneksiDB($conn);
+    return $result;
+}
+
+function addshoes($shoesname, $shoesbrand, $shoesprice, $shoesimage){
+    $conn = bukaKoneksiDB();
+    $sql = "INSERT INTO shoes VALUES ('','$shoesname','$shoesbrand','$shoesprice','$shoesimage')";
+    mysqli_query($conn, $sql);
     tutupKoneksiDB($conn);
 }
