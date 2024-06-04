@@ -1,7 +1,8 @@
 <?php
-include_once("controller.php");
+require 'controller.php';
 session_start();
 LoginRegister();
+
 ?>
 
 
@@ -72,15 +73,15 @@ LoginRegister();
               <path d="M17.6826 27.7607V17.6659C17.6826 14.3193 19.0133 11.1097 21.382 8.74326C23.7507 6.37684 26.9633 5.04739 30.3131 5.04739C33.6629 5.04739 36.8756 6.37684 39.2442 8.74326C41.6129 11.1097 42.9436 14.3193 42.9436 17.6659V27.7607" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>              
           </span>
-          <input class="w-full pl-10 pr-4 py-2 border-none rounded-lg focus:outline-none focus:border-gray-500" type="password" id="loginPassword" placeholder="Password">
+          <input class="w-full pl-10 pr-4 py-2 border-none rounded-lg focus:outline-none focus:border-gray-500" name="password" type="password" id="loginPassword" placeholder="Password">
         </div>
       </div>
-      <button class="w-full py-2 text-center text-white bg-gradient-to-r from-gray-400 to-black rounded-lg">Login</button>
+      <button class="w-full py-2 text-center text-white bg-gradient-to-r from-gray-400 to-black rounded-lg" name='submit'>Login</button>
       <div class="text-center m-4">
         <a class="text-gray-500" href="#" onclick="toggleForm('register')">Don't have an account? <span class="text-stone-300">Register</span></a>
       </div>
     </form>
-
+    
     <!-- Register Form -->
     <form id="registerForm" class="m-4" method="post">
       <div class="mb-4">
