@@ -44,12 +44,15 @@ function LoginRegister(){
                         $_SESSION["login"] = true;
                         $_SESSION["user_id"] = $row["user_id"];
                         echo "<script>alert('Login Successfull!');</script>";
-                    }
-                }else{
+                        exit;
+                        header("Location: index.php");
+    
+
+                    } else{
                     echo "<script>alert('Password Does Not Match);</script>";
-                    // tes
+                
                 }
-            }
+        }
         }
     }
     tutupKoneksiDB($conn);
