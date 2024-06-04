@@ -1,14 +1,15 @@
 <?php
 require 'controller.php';
-include_once("controller.php");
 session_start();
+cekLogin();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Shoes List</title>
+    <title>Shoes Review Page</title>
     <link rel="shortcut icon" type="x-icon" href="Images/Logo/Group 1.png" />
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -35,11 +36,8 @@ session_start();
                     <a href="homepage.php" class="text-lg py-2 mx-8">Home</a>
                   </li>
                   <li class="group">
-                    <a href="addreview.php" class="text-lg py-2 mx-8">Add Review</a>
+                    <a href="#featured" class="text-lg py-2 mx-8">Add Review</a>
                   </li>
-                  <li class="group">
-                  <a href="addshoes.php" class="text-lg py-2 mx-8">Add Shoe</a>
-                </li>
                   <li class="group">
                     <a href="#" class="text-lg py-2 mx-8">Brand</a>
                   </li>
@@ -82,82 +80,25 @@ session_start();
           </div>
         </div>
       </header>
-
-      <section class="list pt-[14rem]">
+      <section class="pt-[12rem] lg:pt-[16rem] mb-40">
         <div class="container mx-auto px-8 lg:px-4">
-          <h1 class="text-3xl flex justify-center font-semibold mb-12">Click on a shoe to review</h1>
-            <div class="grid grid-cols-2 gap-5 lg:grid-cols-5">
-                <div class="shadow-xl h-[18rem] rounded-lg block items-center justify-center lg:h-[20rem] duration-500 hover:duration-300 hover:-translate-y-10">
-                  <a href="#"><img class="rounded-t-lg w-full h-[13rem] lg:h-[15em]" src="">
-                  <p class="text-lg text-center font-semibold justify-center mt-3 lg:mt-2"></p>
-                  <p class="text-sm text-center font-light justify-center mt-1"></p>
-                </a>
-                </div>
-                  <div class="shadow-xl h-[18rem] rounded-lg block items-center justify-center lg:h-[20rem] duration-500 hover:duration-300 hover:-translate-y-10">
-                    <a href="#"><img class="rounded-t-lg w-full h-[13rem] lg:h-[15em]" src="">
-                      <p class="text-lg text-center font-semibold justify-center mt-3 lg:mt-2"></p>
-                      <p class="text-sm text-center font-light justify-center mt-1"></p>
-                    </a>
-                </div>
-                  <div class="shadow-xl h-[18rem] rounded-lg block items-center justify-center lg:h-[20rem] duration-500 hover:duration-300 hover:-translate-y-10">
-                    <a href="#"><img class="rounded-t-lg w-full h-[13rem] lg:h-[15em]" src="">
-                      <p class="text-lg text-center font-semibold justify-center mt-3 lg:mt-2"></p>
-                      <p class="text-sm text-center font-light justify-center mt-1"></p>
-                    </a>
-                </div>
-                  <div class="shadow-xl h-[18rem] rounded-lg block items-center justify-center lg:h-[20rem] duration-500 hover:duration-300 hover:-translate-y-10">
-                    <a href="#"><img class="rounded-t-lg w-full h-[13rem] lg:h-[15em]" src="">
-                      <p class="text-lg text-center font-semibold justify-center mt-3 lg:mt-2"></p>
-                      <p class="text-sm text-center font-light justify-center mt-1"></p>
-                    </a>
-                </div>
-                  <div class="shadow-xl h-[18rem] rounded-lg block items-center justify-center lg:h-[20rem] duration-500 hover:duration-300 hover:-translate-y-10">
-                    <a href="#"><img class="rounded-t-lg w-full h-[13rem] lg:h-[15em]" src="">
-                      <p class="text-lg text-center font-semibold justify-center mt-3 lg:mt-2"></p>
-                      <p class="text-sm text-center font-light justify-center mt-1"></p>
-                    </a>
-                </div>
-                  <div class="shadow-xl h-[18rem] rounded-lg block items-center justify-center lg:h-[20rem] duration-500 hover:duration-300 hover:-translate-y-10">
-                    <a href="#"><img class="rounded-t-lg w-full h-[13rem] lg:h-[15em]" src="">
-                      <p class="text-lg text-center font-semibold justify-center mt-3 lg:mt-2"></p>
-                      <p class="text-sm text-center font-light justify-center mt-1"></p>
-                    </a>
-                </div>
-                  <div class="shadow-xl h-[18rem] rounded-lg block items-center justify-center lg:h-[20rem] duration-500 hover:duration-300 hover:-translate-y-10">
-                    <a href="#"><img class="rounded-t-lg w-full h-[13rem] lg:h-[15em]" src="">
-                      <p class="text-lg text-center font-semibold justify-center mt-3 lg:mt-2"></p>
-                      <p class="text-sm text-center font-light justify-center mt-1"></p>
-                    </a>
+          <div class="flex flex-wrap items-center shadow-xl rounded-lg py-12 lg:py-0">
+            <div class="w-full lg:w-1/2">
+              <img class="w-full h-full object-cover drop-shadow-2xl rounded-t-lg lg:rounded-r-none lg:rounded-l-lg lg:mt-0 mt-[-50px]" src="Images/Photos/Brownish Nike Shoes.jpeg" alt="Brownish Nike Shoes">
+            </div>
+            <div class="block w-full self-center px-4 lg:px-8 lg:w-1/2">
+              <div class="relative mt-10 lg:mt-0">
+                <h1 class="text-2xl font-semibold mb-2">Write a Review of </h1>
+                <form>
+                  <textarea name="review" class="py-3 px-2 w-full h-[8rem] lg:h-[12rem] rounded-lg border-[1px] border-black"></textarea>
+                  <div class="flex mt-4">
+                    <button class="bg-white px-6 py-[10px] border-[2px] rounded-lg border-blackrounded-lg duration-500 hover:bg-slate-600 hover:duration-300 hover:text-white" type="submit" >Submit</button>
                   </div>
-                  <div class="shadow-xl h-[18rem] rounded-lg block items-center justify-center lg:h-[20rem] duration-500 hover:duration-300 hover:-translate-y-10">
-                    <a href="#"><img class="rounded-t-lg w-full h-[13rem] lg:h-[15em]" src="">
-                      <p class="text-lg text-center font-semibold justify-center mt-3 lg:mt-2"></p>
-                      <p class="text-sm text-center font-light justify-center mt-1"></p>
-                    </a>
-                </div>
-                <div class="shadow-xl h-[18rem] rounded-lg block items-center justify-center lg:h-[20rem] duration-500 hover:duration-300 hover:-translate-y-10">
-                  <a href="#"><img class="rounded-t-lg w-full h-[13rem] lg:h-[15em]" src="">
-                    <p class="text-lg text-center font-semibold justify-center mt-3 lg:mt-2"></p>
-                    <p class="text-sm text-center font-light justify-center mt-1"></p>
-                  </a>
+                </form>
               </div>
-              <div class="shadow-xl h-[18rem] rounded-lg block items-center justify-center lg:h-[20rem] duration-500 hover:duration-300 hover:-translate-y-10">
-                <a href="#"><img class="rounded-t-lg w-full h-[13rem] lg:h-[15em]" src="">
-                  <p class="text-lg text-center font-semibold justify-center mt-3 lg:mt-2"></p>
-                  <p class="text-sm text-center font-light justify-center mt-1"></p>
-                </a>
             </div>
-            </div>
-        </div>
-      </section>
-      <footer class="bg-gray-100 pt-12 pb-24 border-t-2 mt-40">
-        <div class="container mx-auto px-4 flex flex-wrap ">
-          <div class="block text-center flex-wrap mx-auto">
-            <h1 class="text-2xl font-semibold my-2">No Air Forces</h1>
-            <p><a class="mx-2" href="#">Terms & Condition</a>|<a class="mx-2" href="#">Contact Us</a></p>
-            <p class="mt-20 flex items-center justify-center text-stone-900">©2024 NoAirJForces Developer Team</p>
           </div>
         </div>
-      </footer>
+      </section>
 </body>
 </html>

@@ -97,13 +97,28 @@ function getAllReview(){
     return $result;
 }
 
-function addshoes($shoesname, $shoesbrand, $shoesprice, $shoesimage){
-
-
-
-    
+function addShoe($name, $brand, $price, $size, $image) {
     $conn = bukaKoneksiDB();
-    $sql = "INSERT INTO shoes VALUES ('','$shoesname','$shoesbrand','$shoesprice','$shoesimage')";
-    mysqli_query($conn, $sql);
+    $sql = "INSERT INTO shoes (name, brand, price, size, image) VALUES (?, ?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ssdss", $name, $brand, $price, $size, $image);
+    $result = $stmt->execute();
     tutupKoneksiDB($conn);
+    return $result;
+
+
 }
+
+if (isset($_POST['shoename'])) {
+    $shoename = $_POST['shoename'];
+    $brand = $_POST['brand'];
+    $price = $_POST['price'];
+    $size = $_POST['size'];
+    $image = $_FILES['image']['name'];
+    $tmp = $_FILES['image']['tmp_name'];
+    $path = "Images/Shoes/".$image;
+    move_uploaded_file($tmp, $path);
+    addShoe($shoename, $brand, $price, $size, $path);
+    echo "<script>alert('Shoe Added!');</script>";
+    echo "<script>window.location.href=('homepage.php')</script>";
+  }
