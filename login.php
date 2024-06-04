@@ -61,7 +61,7 @@ LoginRegister();
               <path d="M30.3131 27.7607C35.8937 27.7607 40.4176 23.2411 40.4176 17.6659C40.4176 12.0907 35.8937 7.57109 30.3131 7.57109C24.7326 7.57109 20.2087 12.0907 20.2087 17.6659C20.2087 23.2411 24.7326 27.7607 30.3131 27.7607Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </span>
-          <input class="w-full pl-10 pr-4 py-2 border-none rounded-lg focus:outline-none focus:border-gray-500" name="name" type="text" id="loginUsername" placeholder="Username">
+          <input class="w-full pl-10 pr-4 py-2 border-none rounded-lg focus:outline-none focus:border-gray-500" name="username" type="text" id="loginUsername" placeholder="Username">
         </div>
       </div>
       <div class="mb-4">
