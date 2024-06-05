@@ -9,15 +9,18 @@ if(isset($_POST['create'])){
   $shoes_name = $_POST['shoes_name'];
   $shoes_size = $_POST['shoes_size'];
   $shoes_price = $_POST['shoes_price'];
-  $shoes_brand = $_POST['shoes_brand'];
+  $shoes_brand = $_POST['shoes_brand']; // Import the necessary dependencies
 
   $uploadImage = 1;
   $image_location = "";
   if(isset($_FILES['shoes_img'])){
       $shoes_img = $_FILES['shoes_img'];
-      $foldername = "Images/Photos";
-      $uploadImage = uploadImage($foldername, $shoes_img);
-      $image_location = $foldername."/".htmlspecialchars(basename("name"));
+      $foldername = "image";
+      $uploadImage = uploadImage($foldername, $shoes_img); // Add the missing uploadImage function
+      $image_location = $foldername."/".htmlspecialchars(basename($shoes_img["name"]));
+      if($image_location){
+        echo "<script>alert('Image Uploaded Successfully!');</script>";
+      }
   }
 
   if($uploadImage == 1){
@@ -26,7 +29,6 @@ if(isset($_POST['create'])){
       echo $uploadImage;
   }
   tutupKoneksiDB($conn);
-  echo "<script>alert($shoes_img)</script>";
   echo "<script>alert('Shoes Added Successfully!');</script>";
 }
 ?>

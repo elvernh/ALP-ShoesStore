@@ -104,14 +104,14 @@ function getAllReview(){
     return $result;
 }
 
-function createShoes($shoes_name, $shoes_size, $image_location, $shoes_price, $shoes_brand){
+function createShoes($shoes_name, $shoes_size, $image_location, $shoes_brand, $shoes_price){
     $conn = bukaKoneksiDB();
     $sql = "INSERT INTO shoes VALUES (NULL, 
     '$shoes_name',
      '$shoes_size',
       '$image_location',
-       '$shoes_price',
-        '$shoes_brand')";
+       '$shoes_brand',
+        '$shoes_price')";
     $result = mysqli_query($conn, $sql);
     if($result == 1){
         $result = mysqli_insert_id($conn);
@@ -130,7 +130,7 @@ function uploadImage($foldername, $photofile){
     $result = 0;
 
     if (file_exists($target_file)) {
-        echo "<script>alert('Sorry, file already exists.');</script>";
+        $result = "<script>alert('Sorry, file already exists.');</script>";
         $uploadOk = 0;
     }
 
@@ -147,8 +147,8 @@ function uploadImage($foldername, $photofile){
     if ($uploadOk == 0) {
         $result .= "<script>alert('Sorry, your file was not uploaded.');</script>";
     } else {
-        if (move_uploaded_file($photofile["tmp_name"], $target_file)) {
-            $result = "<script>alert('The file ". htmlspecialchars(basename($photofile["name"])). " has been uploaded.');</script>";
+        if (move_uploaded_file($photofile['tmp_name'], $target_file)) {
+            $result = 1;
         } else {
             $result = "<script>alert('Sorry, there was an error uploading your file.');</script>";
         }
