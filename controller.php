@@ -88,6 +88,13 @@ function startconnect(){
     return $conn;
 }
 
+function getAllShoes(){
+    $conn = bukaKoneksiDB();
+    $sql = "SELECT * FROM shoes";
+    $result = mysqli_query($conn, $sql);
+    tutupKoneksiDB($conn);
+    return $result;
+}
 
 function getAllReview(){
     $conn = bukaKoneksiDB();
@@ -97,28 +104,55 @@ function getAllReview(){
     return $result;
 }
 
-function addShoe($name, $brand, $price, $size, $image) {
+function createShoes($shoes_name, $shoes_size, $image_location, $shoes_price, $shoes_brand){
     $conn = bukaKoneksiDB();
-    $sql = "INSERT INTO shoes (name, brand, price, size, image) VALUES (?, ?, ?, ?, ?)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssdss", $name, $brand, $price, $size, $image);
-    $result = $stmt->execute();
-    tutupKoneksiDB($conn);
+    $sql = "INSERT INTO shoes VALUES (NULL, 
+    '$shoes_name',
+     '$shoes_size',
+      '$image_location',
+       '$shoes_price',
+        '$shoes_brand')";
+    $result = mysqli_query($conn, $sql);
+    if($result == 1){
+        $result = mysqli_insert_id($conn);
+    }
+
+    tutupKoneksiDB($conn);    
     return $result;
-
-
 }
 
-if (isset($_POST['shoename'])) {
-    $shoename = $_POST['shoename'];
-    $brand = $_POST['brand'];
-    $price = $_POST['price'];
-    $size = $_POST['size'];
-    $image = $_FILES['image']['name'];
-    $tmp = $_FILES['image']['tmp_name'];
-    $path = "Images/Shoes/".$image;
-    move_uploaded_file($tmp, $path);
-    addShoe($shoename, $brand, $price, $size, $path);
-    echo "<script>alert('Shoe Added!');</script>";
-    echo "<script>window.location.href=('homepage.php')</script>";
-  }
+function uploadImage($foldername, $photofile){
+    $target_dir = $foldername."/";
+    $target_file = $target_dir . basename($photofile["name"]);
+    $uploadOk = 1;
+    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+    $result = 0;
+
+    if (file_exists($target_file)) {
+        echo "<script>alert('Sorry, file already exists.');</script>";
+        $uploadOk = 0;
+    }
+
+    if ($photofile["size"] > 500000) {
+        $result = "<script>alert('Sorry, your file is too large.');</script>";
+        $uploadOk = 0;
+    }
+
+    if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
+        $result = "<script>alert('Sorry, only JPG, JPEG, PNG files are allowed.');</script>";
+        $uploadOk = 0;
+    } 
+
+    if ($uploadOk == 0) {
+        $result .= "<script>alert('Sorry, your file was not uploaded.');</script>";
+    } else {
+        if (move_uploaded_file($photofile["tmp_name"], $target_file)) {
+            $result = "<script>alert('The file ". htmlspecialchars(basename($photofile["name"])). " has been uploaded.');</script>";
+        } else {
+            $result = "<script>alert('Sorry, there was an error uploading your file.');</script>";
+        }
+    }
+
+    return $result;
+}

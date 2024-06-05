@@ -110,7 +110,19 @@ session_start();
       <div class="container mx-auto px-8 relative lg:px-4">
         <h2 class="text-2xl font-bold mb-4">New Reviews</h2>
         <div class="wrapper snap-x max-h-[220px] flex overflow-x-auto lg:max-h-[520px]">
-          <div class="item snap-center min-w-[200px] h-[200px] align-center bg-white border-2 mx-2 lg:min-w-[500px] lg:h-[500px]">
+          <?php
+          $all = getAllShoes();
+          $counter = 0;
+          while ($row = mysqli_fetch_assoc($all)) {
+            if($counter >= 5){
+              break;
+            }
+            echo '<div class="rounded-lg item snap-center min-w-[200px] h-[200px] align-center bg-white border-2 mx-2 lg:min-w-[500px] lg:h-[500px]">
+            <a href="shoesReview.php?id=' . $row['shoes_id'] . '"><img class="h-full rounded-lg" src="' . $row['shoes_img'] . '"></a></div>';
+            $counter++;
+          }
+          ?>
+          <!-- <div class="item snap-center min-w-[200px] h-[200px] align-center bg-white border-2 mx-2 lg:min-w-[500px] lg:h-[500px]">
             <img class="h-full" src="">
           </div>
           <div class="item snap-center min-w-[200px] h-[200px] align-center bg-white border-2 mx-2 lg:min-w-[500px] lg:h-[500px]">
@@ -124,7 +136,7 @@ session_start();
           </div>
           <div class="item snap-center min-w-[200px] h-[200px] align-center bg-white border-2 mx-2 lg:min-w-[500px] lg:h-[500px]">
             <a href="#"><img class="h-full" src=""></a>
-          </div>
+          </div> -->
         </div>
       </div>
     </section>

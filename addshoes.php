@@ -3,6 +3,32 @@ require 'controller.php';
 session_start();
 cekLogin();
 
+if(isset($_POST['create'])){
+  $conn = bukaKoneksiDB();
+  $conn;
+  $shoes_name = $_POST['shoes_name'];
+  $shoes_size = $_POST['shoes_size'];
+  $shoes_price = $_POST['shoes_price'];
+  $shoes_brand = $_POST['shoes_brand'];
+
+  $uploadImage = 1;
+  $image_location = "";
+  if(isset($_FILES['shoes_img'])){
+      $shoes_img = $_FILES['shoes_img'];
+      $foldername = "image";
+      $uploadImage = uploadImage($foldername, $shoes_img);
+      $image_location = $foldername."/".htmlspecialchars(basename($shoes_img));
+  }
+
+  if($uploadImage == 1){
+    createShoes($shoes_name, $shoes_size, $image_location, $shoes_price, $shoes_brand);
+  }else{
+      echo $uploadImage;
+  }
+  tutupKoneksiDB($conn);
+  echo "<script>alert($shoes_img)</script>";
+  echo "<script>alert('Shoes Added Successfully!');</script>";
+}
 ?>
 
 
@@ -41,7 +67,7 @@ cekLogin();
                   <a href="homepage.php" class="text-lg py-2 mx-8">Home</a>
                 </li>
                 <li class="group">
-                  <a href="add." class="text-lg py-2 mx-8">Add Review</a>
+                  <a href="addreview.php" class="text-lg py-2 mx-8">Add Review</a>
                 </li>
                 <li class="group">
                   <a href="addshoes.php" class="text-lg py-2 mx-8">Add Shoe</a>
@@ -93,24 +119,24 @@ cekLogin();
   <div class="flex justify-between items-center bg-white p-6 rounded-lg shadow-lg">
     <div class="w-full lg:w-1/2">
       <h1 class="text-2xl font-bold mb-4 lg:text-3xl mb-4">Add Shoes</h1>
-      <form method="POST" enctype="multipart/form-data">
+      <form method="POST" action="addshoes.php" enctype="multipart/form-data">
         
         <label for="shoename" class="block text-lg font-medium text-gray-700 mt-4">Shoe name:</label>
-        <input type="text" id="shoename" name="shoename" class="mt-2 p-2 w-full border border-gray-300 rounded-lg">
+        <input type="text" id="shoename" name="shoes_name" class="mt-2 p-2 w-full border border-gray-300 rounded-lg">
         
         <label for="brand" class="block text-lg font-medium text-gray-700 mt-4">Brand:</label>
-        <input type="text" id="brand" name="brand" class="mt-2 p-2 w-full border border-gray-300 rounded-lg">
+        <input type="text" id="brand" name="shoes_brand" class="mt-2 p-2 w-full border border-gray-300 rounded-lg">
         
         <label for="price" class="block text-lg font-medium text-gray-700 mt-4">Price (IDR):</label>
-        <input type="text" id="price" name="price" class="mt-2 p-2 w-full border border-gray-300 rounded-lg">
+        <input type="text" id="price" name="shoes_price" class="mt-2 p-2 w-full border border-gray-300 rounded-lg">
         
         <label for="size" class="block text-lg font-medium text-gray-700 mt-4">Size:</label>
-        <input type="text" id="size" name="size" class="mt-2 p-2 w-full border border-gray-300 rounded-lg">
+        <input type="text" id="size" name="shoes_size" class="mt-2 p-2 w-full border border-gray-300 rounded-lg">
         
         <label for="image" class="block text-lg font-medium text-gray-700 mt-4">Upload Image:</label>
-        <input type="file" id="image" name="image" class="mt-2 p-2 w-full border border-gray-300 rounded-lg ">
+        <input type="file" id="image" name="shoes_img" class="mt-2 p-2 w-full border border-gray-300 rounded-lg ">
         
-        <button type="submit" class="mt-4 bg-gray-300 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-400">Post</button>
+        <input type="submit" name="create" value="Post" class="mt-4 bg-gray-300 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-400"></input>
       </form>
     </div>
   </div>
