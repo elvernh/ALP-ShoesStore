@@ -106,12 +106,8 @@ function getAllReview(){
 
 function createShoes($shoes_name, $shoes_size, $image_location, $shoes_brand, $shoes_price){
     $conn = bukaKoneksiDB();
-    $sql = "INSERT INTO shoes VALUES (NULL, 
-    '$shoes_name',
-     '$shoes_size',
-      '$image_location',
-       '$shoes_brand',
-        '$shoes_price')";
+    $sql = "INSERT INTO `shoes` (`shoes_id`, `shoes_name`, `shoes_size`, `shoes_img`, `shoes_brand`, `shoes_price`) VALUES 
+    (NULL, '$shoes_name', '$shoes_size', '$image_location', '$shoes_brand', '$shoes_price');";
     $result = mysqli_query($conn, $sql);
     if($result == 1){
         $result = mysqli_insert_id($conn);
