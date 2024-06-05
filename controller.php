@@ -96,6 +96,14 @@ function getAllShoes(){
     return $result;
 }
 
+function getShoesDetail($shoes_id){
+    $conn = bukaKoneksiDB();
+    $sql = "SELECT * FROM shoes WHERE shoes_id = $shoes_id";
+    $result = mysqli_query($conn, $sql);
+    tutupKoneksiDB($conn);
+    return $result;
+}
+
 function getAllReview(){
     $conn = bukaKoneksiDB();
     $sql = "SELECT * FROM shoes, review WHERE shoes.shoes_id = review.shoes_id";
@@ -169,5 +177,24 @@ function uploadImage($foldername, $photoFile){
             $result = "<script>alert('Sorry, there was an error uploading your file.');</script>";
         }
     }
+    return $result;
+}
+
+function createReview($review_id, $shoes_id, $user_id, $review){
+    $conn = bukaKoneksiDB();
+    $sql = "INSERT INTO review (review_id, user_id, shoes_id, review) VALUES (NULL,'$review_id', '$shoes_id', '$user_id', '$review');";
+    $result = mysqli_query($conn, $sql); 
+    if($result ==1){
+        $result = mysqli_insert_id($conn);
+    }
+    tutupKoneksiDB($conn);
+    return $result;
+}
+
+function getReviewDetail($shoes_id){
+    $conn = bukaKoneksiDB();
+    $sql = "SELECT * FROM shoes WHERE shoes_id = $shoes_id";
+    $result = mysqli_query($conn, $sql);
+    tutupKoneksiDB($conn);
     return $result;
 }

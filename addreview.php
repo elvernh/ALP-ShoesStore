@@ -38,13 +38,10 @@ cekLogin();
                     <a href="addreview.php" class="text-lg py-2 mx-8">Add Review</a>
                   </li>
                   <li class="group">
-                  <a href="addshoes.php" class="text-lg py-2 mx-8">Add Shoe</a>
+                  <a href="addshoes.php" class="text-lg py-2 mx-8">Add Shoes</a>
                 </li>
                   <li class="group">
-                    <a href="#" class="text-lg py-2 mx-8">Brand</a>
-                  </li>
-                  <li class="group">
-                    <a href="#" class="text-lg py-2 mx-8">My Review</a>
+                    <a href="myreview.php" class="text-lg py-2 mx-8">My Review</a>
                   </li>
                   <div class="block lg:flex lg:ml-14">
                 
@@ -53,7 +50,8 @@ cekLogin();
                       echo '<li><a href="logout.php" class="text-lg">Log Out</a></li>';
                     }else{
                       echo '<li><a href="login.php" class="text-lg">Login/Register</a></li>';
-                    }                  
+                    }
+
                     ?>
                     <li>
                       <form class="search">
@@ -82,81 +80,23 @@ cekLogin();
           </div>
         </div>
       </header>
-
+      
       <section class="list pt-[14rem]">
+        
         <div class="container mx-auto px-8 lg:px-4">
           <h1 class="text-3xl flex justify-center font-semibold mb-12">Click on a shoe to review</h1>
             <div class="grid grid-cols-2 gap-5 lg:grid-cols-5">
               <?php
               $all = getAllShoes();
+
               foreach($all as $shoe) {
                 echo '<div class="shadow-xl h-[18rem] rounded-lg block items-center justify-center lg:h-[20rem] duration-500 hover:duration-300 hover:-translate-y-10">
-                <a href="addreview.php?id='.$shoe['shoes_id'].'"><img class="rounded-t-lg w-full h-[13rem] lg:h-[15em]" src="'.$shoe['shoes_img'].'">
+                <a href="shoesReview.php?shoes_id='.$shoe['shoes_id'].'"><img class="rounded-t-lg w-full h-[13rem] lg:h-[15em]" src="'.$shoe['shoes_img'].'">
                   <p class="text-lg text-center font-semibold justify-center mt-3 lg:mt-2">'.$shoe['shoes_name'].'</p>
                   <p class="text-sm text-center font-light justify-center mt-1">'.$shoe['shoes_brand'].'</p>
                 </a></div>';
-              }
+              }  
               ?>
-                <!-- <div class="shadow-xl h-[18rem] rounded-lg block items-center justify-center lg:h-[20rem] duration-500 hover:duration-300 hover:-translate-y-10">
-                  <a href="#"><img class="rounded-t-lg w-full h-[13rem] lg:h-[15em]" src="">
-                  <p class="text-lg text-center font-semibold justify-center mt-3 lg:mt-2"></p>
-                  <p class="text-sm text-center font-light justify-center mt-1"></p>
-                </a>
-                </div>
-                  <div class="shadow-xl h-[18rem] rounded-lg block items-center justify-center lg:h-[20rem] duration-500 hover:duration-300 hover:-translate-y-10">
-                    <a href="#"><img class="rounded-t-lg w-full h-[13rem] lg:h-[15em]" src="">
-                      <p class="text-lg text-center font-semibold justify-center mt-3 lg:mt-2"></p>
-                      <p class="text-sm text-center font-light justify-center mt-1"></p>
-                    </a>
-                </div>
-                  <div class="shadow-xl h-[18rem] rounded-lg block items-center justify-center lg:h-[20rem] duration-500 hover:duration-300 hover:-translate-y-10">
-                    <a href="#"><img class="rounded-t-lg w-full h-[13rem] lg:h-[15em]" src="">
-                      <p class="text-lg text-center font-semibold justify-center mt-3 lg:mt-2"></p>
-                      <p class="text-sm text-center font-light justify-center mt-1"></p>
-                    </a>
-                </div>
-                  <div class="shadow-xl h-[18rem] rounded-lg block items-center justify-center lg:h-[20rem] duration-500 hover:duration-300 hover:-translate-y-10">
-                    <a href="#"><img class="rounded-t-lg w-full h-[13rem] lg:h-[15em]" src="">
-                      <p class="text-lg text-center font-semibold justify-center mt-3 lg:mt-2"></p>
-                      <p class="text-sm text-center font-light justify-center mt-1"></p>
-                    </a>
-                </div>
-                  <div class="shadow-xl h-[18rem] rounded-lg block items-center justify-center lg:h-[20rem] duration-500 hover:duration-300 hover:-translate-y-10">
-                    <a href="#"><img class="rounded-t-lg w-full h-[13rem] lg:h-[15em]" src="">
-                      <p class="text-lg text-center font-semibold justify-center mt-3 lg:mt-2"></p>
-                      <p class="text-sm text-center font-light justify-center mt-1"></p>
-                    </a>
-                </div>
-                  <div class="shadow-xl h-[18rem] rounded-lg block items-center justify-center lg:h-[20rem] duration-500 hover:duration-300 hover:-translate-y-10">
-                    <a href="#"><img class="rounded-t-lg w-full h-[13rem] lg:h-[15em]" src="">
-                      <p class="text-lg text-center font-semibold justify-center mt-3 lg:mt-2"></p>
-                      <p class="text-sm text-center font-light justify-center mt-1"></p>
-                    </a>
-                </div>
-                  <div class="shadow-xl h-[18rem] rounded-lg block items-center justify-center lg:h-[20rem] duration-500 hover:duration-300 hover:-translate-y-10">
-                    <a href="#"><img class="rounded-t-lg w-full h-[13rem] lg:h-[15em]" src="">
-                      <p class="text-lg text-center font-semibold justify-center mt-3 lg:mt-2"></p>
-                      <p class="text-sm text-center font-light justify-center mt-1"></p>
-                    </a>
-                  </div>
-                  <div class="shadow-xl h-[18rem] rounded-lg block items-center justify-center lg:h-[20rem] duration-500 hover:duration-300 hover:-translate-y-10">
-                    <a href="#"><img class="rounded-t-lg w-full h-[13rem] lg:h-[15em]" src="">
-                      <p class="text-lg text-center font-semibold justify-center mt-3 lg:mt-2"></p>
-                      <p class="text-sm text-center font-light justify-center mt-1"></p>
-                    </a>
-                </div>
-                <div class="shadow-xl h-[18rem] rounded-lg block items-center justify-center lg:h-[20rem] duration-500 hover:duration-300 hover:-translate-y-10">
-                  <a href="#"><img class="rounded-t-lg w-full h-[13rem] lg:h-[15em]" src="">
-                    <p class="text-lg text-center font-semibold justify-center mt-3 lg:mt-2"></p>
-                    <p class="text-sm text-center font-light justify-center mt-1"></p>
-                  </a>
-              </div>
-              <div class="shadow-xl h-[18rem] rounded-lg block items-center justify-center lg:h-[20rem] duration-500 hover:duration-300 hover:-translate-y-10">
-                <a href="#"><img class="rounded-t-lg w-full h-[13rem] lg:h-[15em]" src="">
-                  <p class="text-lg text-center font-semibold justify-center mt-3 lg:mt-2"></p>
-                  <p class="text-sm text-center font-light justify-center mt-1"></p>
-                </a>
-            </div> -->
             </div>
         </div>
       </section>

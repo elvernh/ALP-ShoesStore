@@ -42,13 +42,10 @@ session_start();
                   <a href="addreview.php" class="text-lg py-2 mx-8">Add Review</a>
                 </li>
                 <li class="group">
-                  <a href="addshoes.php" class="text-lg py-2 mx-8">Add Shoe</a>
+                  <a href="addshoes.php" class="text-lg py-2 mx-8">Add Shoes</a>
                 </li>
                 <li class="group">
-                  <a href="#" class="text-lg py-2 mx-8">Brand</a>
-                </li>
-                <li class="group">
-                  <a href="#" class="text-lg py-2 mx-8">My Review</a>
+                  <a href="myreview.php" class="text-lg py-2 mx-8">My Review</a>
                 </li>
                 <div class="block lg:flex lg:ml-14">
               
@@ -122,21 +119,6 @@ session_start();
             $counter++;
           }
           ?>
-          <!-- <div class="item snap-center min-w-[200px] h-[200px] align-center bg-white border-2 mx-2 lg:min-w-[500px] lg:h-[500px]">
-            <img class="h-full" src="">
-          </div>
-          <div class="item snap-center min-w-[200px] h-[200px] align-center bg-white border-2 mx-2 lg:min-w-[500px] lg:h-[500px]">
-            <a href="#"><img class="h-full" src=""></a>
-          </div>
-          <div class="item snap-center min-w-[200px] h-[200px] align-center bg-white border-2 mx-2 lg:min-w-[500px] lg:h-[500px]">
-            <a href="#"><img class="h-full" src=""></a>
-          </div>
-          <div class="item snap-center min-w-[200px] h-[200px] align-center bg-white border-2 mx-2 lg:min-w-[500px] lg:h-[500px]">
-            <a href="#"><img class="h-full" src=""></a>
-          </div>
-          <div class="item snap-center min-w-[200px] h-[200px] align-center bg-white border-2 mx-2 lg:min-w-[500px] lg:h-[500px]">
-            <a href="#"><img class="h-full" src=""></a>
-          </div> -->
         </div>
       </div>
     </section>

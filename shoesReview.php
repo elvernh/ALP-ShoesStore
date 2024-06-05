@@ -36,13 +36,13 @@ cekLogin();
                     <a href="homepage.php" class="text-lg py-2 mx-8">Home</a>
                   </li>
                   <li class="group">
-                    <a href="#featured" class="text-lg py-2 mx-8">Add Review</a>
+                    <a href="addReview.php" class="text-lg py-2 mx-8">Add Review</a>
                   </li>
                   <li class="group">
-                    <a href="#" class="text-lg py-2 mx-8">Brand</a>
+                    <a href="addshoes.php" class="text-lg py-2 mx-8">Add Shoes</a>
                   </li>
                   <li class="group">
-                    <a href="#" class="text-lg py-2 mx-8">My Review</a>
+                    <a href="myreview.php" class="text-lg py-2 mx-8">My Review</a>
                   </li>
                   <div class="block lg:flex lg:ml-14">
                 
@@ -84,7 +84,10 @@ cekLogin();
         <div class="container mx-auto px-8 lg:px-4">
           <div class="flex flex-wrap items-center shadow-xl rounded-lg py-12 lg:py-0">
             <div class="w-full lg:w-1/2">
-              <img class="w-full h-full object-cover drop-shadow-2xl rounded-t-lg lg:rounded-r-none lg:rounded-l-lg lg:mt-0 mt-[-50px]" src="Images/Photos/Brownish Nike Shoes.jpeg" alt="Brownish Nike Shoes">
+              <?php
+              echo '<img class="w-full h-full object-cover drop-shadow-2xl rounded-t-lg lg:rounded-r-none lg:rounded-l-lg lg:mt-0 mt-[-50px]" src="'.'">';
+              ?>
+
             </div>
             <div class="block w-full self-center px-4 lg:px-8 lg:w-1/2">
               <div class="relative mt-10 lg:mt-0">
@@ -100,5 +103,6 @@ cekLogin();
           </div>
         </div>
       </section>
+      
 </body>
 </html>

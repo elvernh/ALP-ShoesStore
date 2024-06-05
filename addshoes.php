@@ -66,13 +66,10 @@ cekLogin();
                   <a href="addreview.php" class="text-lg py-2 mx-8">Add Review</a>
                 </li>
                 <li class="group">
-                  <a href="addshoes.php" class="text-lg py-2 mx-8">Add Shoe</a>
+                  <a href="addshoes.php" class="text-lg py-2 mx-8">Add Shoes</a>
                 </li>
                 <li class="group">
-                  <a href="#" class="text-lg py-2 mx-8">Brand</a>
-                </li>
-                <li class="group">
-                  <a href="#" class="text-lg py-2 mx-8">My Review</a>
+                  <a href="myreview.php" class="text-lg py-2 mx-8">My Review</a>
                 </li>
                 <div class="block lg:flex lg:ml-14">
                 <?php

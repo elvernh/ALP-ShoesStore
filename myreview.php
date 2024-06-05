@@ -1,6 +1,9 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+  <head> 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>No Air Forces - Where Good Shoes Comes</title>
@@ -10,6 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <script src="scriptHome.js" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    
 
   </head>
   <body class="font-rubik"> 
@@ -27,20 +31,27 @@
             </button>
             <nav id="nav-menu" class="hidden absolute py-5 bg-white shadow-lg rounded-lg max-w-[250px] w-full top-full right-4 lg:flex lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none">
               <ul class="navUl block lg:flex lg:mt-8 lg:mx-auto">
-                <li class="group">
-                  <a href="#featured" class="text-lg py-2 mx-8">New Featured</a>
+              <li class="group">
+                  <a href="homepage.php" class="text-lg py-2 mx-8">Home</a>
                 </li>
                 <li class="group">
-                  <a href="#" class="text-lg py-2 mx-8">Brand</a>
+                  <a href="addreview.php" class="text-lg py-2 mx-8">Add Review</a>
                 </li>
                 <li class="group">
-                  <a href="#" class="text-lg py-2 mx-8">Review</a>
+                  <a href="addshoes.php" class="text-lg py-2 mx-8">Add Shoes</a>
                 </li>
                 <li class="group">
-                  <a href="#" class="text-lg py-2 mx-8">Top Rated</a>
+                  <a href="myreview.php" class="text-lg py-2 mx-8">My Review</a>
                 </li>
                 <div class="block lg:flex lg:ml-14">
-                  <li><a href="login.html" class="text-lg"> Login / Register</a></li>
+              
+                  <?php
+                  if(isset($_SESSION['username'])) {
+                    echo '<li><a href="logout.php" class="text-lg">Log Out</a></li>';
+                  }else{
+                    echo '<li><a href="login.php" class="text-lg">Login/Register</a></li>';
+                  }                  
+                  ?>
                   <li>
                     <form class="search">
                       <button class="absolute mt-1.5 ml-2" type="submit"><svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -67,62 +78,8 @@
         </div>
         </div>
       </div>
+
     </header>
 
-    <section id="home" class="pt-36 pb-10 bg-gray-50">
-      <div class="container mx-auto px-4">
-        <div class="flex flex-wrap items-center">
-          <div class="w-full self-center px-4 lg:w-1/2">
-            <img class="drop-shadow-2xl" src="Images/Photos/pngegg-2.png">
-          </div>
-          <div class="w-full self-center px-4 lg:w-1/2">
-            <div class="relative mt-10 lg:mt-9 lg:right-0">
-              <h1 class="text-3xl font-semibold">Discover insightful reviews for your favorite shoes from fellow users, available anytime, anywhere.</h1>
-              <p class="my-10">Easily access comprehensive online reviews to make informed purchasing decisions and find the perfect pair for every occasion.</p>
-              <div class="flex">
-                <button class="rounded-full border-2 border-stone-900 px-6 py-[10px]">Review Now</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <section id="slider" class="pt-20">
-      <div class="container mx-auto px-8 relative lg:px-4">
-        <h2 class="text-2xl font-bold mb-4">New Reviews</h2>
-        <div class="wrapper max-h-[220px] flex overflow-x-auto lg:max-h-[520px]">
-          <div class="item  min-w-[200px] h-[200px] align-center bg-white border-2 mx-2 lg:min-w-[500px] lg:h-[500px]">
-            <img class="h-full" src="">
-          </div>
-          <div class="item  min-w-[200px] h-[200px] align-center bg-white border-2 mx-2 lg:min-w-[500px] lg:h-[500px]">
-            <a href="#"><img class="h-full" src=""></a>
-          </div>
-          <div class="item  min-w-[200px] h-[200px] align-center bg-white border-2 mx-2 lg:min-w-[500px] lg:h-[500px]">
-            <a href="#"><img class="h-full" src=""></a>
-          </div>
-          <div class="item  min-w-[200px] h-[200px] align-center bg-white border-2 mx-2 lg:min-w-[500px] lg:h-[500px]">
-            <a href="#"><img class="h-full" src=""></a>
-          </div>
-          <div class="item  min-w-[200px] h-[200px] align-center bg-white border-2 mx-2 lg:min-w-[500px] lg:h-[500px]">
-            <a href="#"><img class="h-full" src=""></a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="pt-36">
-
-    </section>
-
-    <footer class="bg-gray-100 pt-12 pb-24 border-t-2">
-      <div class="container mx-auto px-4 flex flex-wrap ">
-        <div class="block text-center flex-wrap mx-auto">
-          <h1 class="text-2xl font-semibold my-2">No Air Jordan</h1>
-          <p><a class="mx-2" href="#">Terms & Condition</a>|<a class="mx-2" href="#">Contact Us</a></p>
-          <p class="mt-20 flex items-center justify-center text-stone-900">©2024 NoAirJordan Developer Team</p>
-        </div>
-      </div>
-    </footer>
   </body>
-</html>
