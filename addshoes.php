@@ -1,5 +1,35 @@
+<?php
+require 'controller.php';
+session_start();
+cekLogin();
 
+if(isset($_POST['create'])){
+  $conn = bukaKoneksiDB();
+  $conn;
+  $shoes_name = $_POST['shoes_name'];
+  $shoes_size = $_POST['shoes_size'];
+  $shoes_price = $_POST['shoes_price'];
+  $shoes_brand = $_POST['shoes_brand'];
 
+  $uploadImage = 1;
+  $image_location = "";
+  if(isset($_FILES['shoes_img'])){
+      $shoes_img = $_FILES['shoes_img'];
+      $foldername = "image";
+      $uploadImage = uploadImage($foldername, $shoes_img);
+      $image_location = $foldername."/".htmlspecialchars(basename($shoes_img));
+  }
+
+  if($uploadImage == 1){
+    createShoes($shoes_name, $shoes_size, $image_location, $shoes_price, $shoes_brand);
+  }else{
+      echo $uploadImage;
+  }
+  tutupKoneksiDB($conn);
+  echo "<script>alert($shoes_img)</script>";
+  echo "<script>alert('Shoes Added Successfully!');</script>";
+}
+?>
 
 
 
@@ -33,8 +63,14 @@
             </button>
             <nav id="nav-menu" class="hidden absolute py-5 bg-white shadow-lg rounded-lg max-w-[250px] w-full top-full right-4 lg:flex lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none">
               <ul class="navUl block lg:flex lg:mt-8 lg:mx-auto">
+              <li class="group">
+                  <a href="homepage.php" class="text-lg py-2 mx-8">Home</a>
+                </li>
                 <li class="group">
-                  <a href="#featured" class="text-lg py-2 mx-8">Add Review</a>
+                  <a href="addreview.php" class="text-lg py-2 mx-8">Add Review</a>
+                </li>
+                <li class="group">
+                  <a href="addshoes.php" class="text-lg py-2 mx-8">Add Shoe</a>
                 </li>
                 <li class="group">
                   <a href="#" class="text-lg py-2 mx-8">Brand</a>
@@ -42,16 +78,14 @@
                 <li class="group">
                   <a href="#" class="text-lg py-2 mx-8">My Review</a>
                 </li>
-                <li class="group">
-                  <a href="#" class="text-lg py-2 mx-8">Delete Review</a>
-                </li>
                 <div class="block lg:flex lg:ml-14">
                 <?php
-                  if(isset($_SESSION['user'])) {
-                    echo '<li><a href="logout.php" class="text-lg">Logout</a></li>';
+                  if(isset($_SESSION['username'])) {
+                    echo '<li><a href="logout.php" class="text-lg">Log Out</a></li>';
                   }else{
                     echo '<li><a href="login.php" class="text-lg">Login / Register</a></li>';
                   }
+                  
                   ?>                 
                    <li>
                     <form class="search">
@@ -81,44 +115,31 @@
       </div>
 
     </header>
-    <!-- Review Section -->
-    
-<div class="container mx-auto p-6">
-    <div class="flex justify-between items-center bg-white p-6 rounded-lg shadow-lg">
-        <div class="w-1/2 pt-36">
-            <img src="https://image-cdn.hypb.st/https%3A%2F%2Fhypebeast.com%2Fimage%2F2021%2F11%2Fnike-kyrie-8-keep-sue-fresh-DC9134-002-release-date-0.jpg?w=960&cbr=1&q=90&fit=max" alt="Nike Kyrie 8" class="w-full h-auto">
-        </div>
-        <div class="w-1/2 pl-6">
-            <h2 class="text-2xl font-bold">Nike Kyrie 8<br>"Keep Sue Fresh"</h2>
-            <form class="mt-4">
-                <label for="review" class="block text-lg font-medium text-gray-700">Write your review:</label>
-                <textarea id="review" name="review" rows="5" class="mt-2 p-2 w-full border border-gray-300 rounded-lg"></textarea>
-                <button type="submit" class="mt-4 bg-gray-300 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-400">Post</button>
-            </form>
-        </div>
+<div class="container mx-auto px-6 pt-[12rem]">
+  <div class="flex justify-between items-center bg-white p-6 rounded-lg shadow-lg">
+    <div class="w-full lg:w-1/2">
+      <h1 class="text-2xl font-bold mb-4 lg:text-3xl mb-4">Add Shoes</h1>
+      <form method="POST" action="addshoes.php" enctype="multipart/form-data">
+        
+        <label for="shoename" class="block text-lg font-medium text-gray-700 mt-4">Shoe name:</label>
+        <input type="text" id="shoename" name="shoes_name" class="mt-2 p-2 w-full border border-gray-300 rounded-lg">
+        
+        <label for="brand" class="block text-lg font-medium text-gray-700 mt-4">Brand:</label>
+        <input type="text" id="brand" name="shoes_brand" class="mt-2 p-2 w-full border border-gray-300 rounded-lg">
+        
+        <label for="price" class="block text-lg font-medium text-gray-700 mt-4">Price (IDR):</label>
+        <input type="text" id="price" name="shoes_price" class="mt-2 p-2 w-full border border-gray-300 rounded-lg">
+        
+        <label for="size" class="block text-lg font-medium text-gray-700 mt-4">Size:</label>
+        <input type="text" id="size" name="shoes_size" class="mt-2 p-2 w-full border border-gray-300 rounded-lg">
+        
+        <label for="image" class="block text-lg font-medium text-gray-700 mt-4">Upload Image:</label>
+        <input type="file" id="image" name="shoes_img" class="mt-2 p-2 w-full border border-gray-300 rounded-lg ">
+        
+        <input type="submit" name="create" value="Post" class="mt-4 bg-gray-300 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-400"></input>
+      </form>
     </div>
-
-    <div class="mt-8 bg-gray-200 p-6 rounded-lg">
-        <h3 class="text-xl font-bold mb-4">Previous reviewers:</h3>
-        <div class="space-y-6">
-            <div class="flex items-center bg-white p-4 rounded-lg shadow">
-                <div class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center">
-                    <span class="text-sm font-medium text-gray-700">USERNAME</span>
-                </div>
-                <div class="ml-4 flex-1">
-                    <p class="text-gray-700">User review content goes here.</p>
-                </div>
-            </div>
-            <div class="flex items-center bg-white p-4 rounded-lg shadow">
-                <div class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center">
-                    <span class="text-sm font-medium text-gray-700">USERNAME</span>
-                </div>
-                <div class="ml-4 flex-1">
-                    <p class="text-gray-700">User review content goes here.</p>
-                </div>
-            </div>
-        </div>
-    </div>
+  </div>
 </div>
 </body>
 </html>
