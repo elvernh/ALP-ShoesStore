@@ -15,9 +15,9 @@ if(isset($_POST['create'])){
   $image_location = "";
   if(isset($_FILES['shoes_img'])){
       $shoes_img = $_FILES['shoes_img'];
-      $foldername = "image";
+      $foldername = "Images/Photos";
       $uploadImage = uploadImage($foldername, $shoes_img);
-      $image_location = $foldername."/".htmlspecialchars(basename($shoes_img));
+      $image_location = $foldername."/".htmlspecialchars(basename("name"));
   }
 
   if($uploadImage == 1){
