@@ -172,6 +172,7 @@ function uploadImage($foldername, $photoFile){
     } else {
         if (move_uploaded_file($_FILES["shoes_img"]["tmp_name"], $target_file)) {
             $result = 1;
+            echo "<script>alert('The file ". htmlspecialchars( basename( $_FILES["shoes_img"]["name"])). " has been uploaded.');</script>";
             
         } else {
             $result = "<script>alert('Sorry, there was an error uploading your file.');</script>";

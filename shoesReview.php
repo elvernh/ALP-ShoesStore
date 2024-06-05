@@ -86,7 +86,7 @@ cekLogin();
           if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
           }
-          $sql = 'SELECT shoes_id, shoes_name, shoes_img FROM shoes';
+          $sql = 'SELECT shoes_id, shoes_name, shoes_img FROM shoes WHERE shoes_id = ' . $_GET['shoes_id'] . ' LIMIT 1';
 
           $result = mysqli_query($conn, $sql);
 
