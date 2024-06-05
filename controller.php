@@ -104,51 +104,54 @@ function getAllReview(){
     return $result;
 }
 
-function createShoes($shoes_name, $shoes_size, $image_location, $shoes_brand, $shoes_price){
+function createShoes($shoes_name, $shoes_brand, $shoes_price, $shoes_size, $image_location){
     $conn = bukaKoneksiDB();
-    $sql = "INSERT INTO `shoes` (`shoes_id`, `shoes_name`, `shoes_size`, `shoes_img`, `shoes_brand`, `shoes_price`) VALUES 
-    (NULL, '$shoes_name', '$shoes_size', '$image_location', '$shoes_brand', '$shoes_price');";
-    $result = mysqli_query($conn, $sql);
-    if($result == 1){
+    $sql =  "INSERT TO 'shoes' ('shoes_id','shoes_name','shoes_size ','shoes_img','shoes_brand','shoes_price') VALUES (NULL,'$shoes_name',$shoes_size','$image_location','$shoes_brand','$shoes_price');"; 
+    $result = mysqli_query($conn, $sql); 
+    if($result ==1){
         $result = mysqli_insert_id($conn);
     }
-
-    tutupKoneksiDB($conn);    
+    tutupKoneksiDB($conn);
     return $result;
 }
 
-function uploadImage($foldername, $photofile){
+function uploadImage($foldername, $photoFile){
     $target_dir = $foldername."/";
-    $target_file = $target_dir . basename($photofile["name"]);
+    $target_file = $target_dir . basename($_FILES["shoes_img"]["name"]);
     $uploadOk = 1;
-    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+    $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION)); 
 
-    $result = 0;
-
+    $result = 1;
+    if(isset($_POST["create"])) {
+        $check = getimagesize($_FILES["shoes_img"]["tmp_name"]);
+        if($check !== false) {
+            $uploadOk = 1;
+        } else {
+            $result = "<script>alert('File is not an image.');</script>";
+            $uploadOk = 0;
+        }
+    }
     if (file_exists($target_file)) {
         $result = "<script>alert('Sorry, file already exists.');</script>";
         $uploadOk = 0;
     }
-
-    if ($photofile["size"] > 500000) {
+    if ($_FILES["shoes_img"]["size"] > 500000) {
         $result = "<script>alert('Sorry, your file is too large.');</script>";
         $uploadOk = 0;
     }
-
-    if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
+    if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
         $result = "<script>alert('Sorry, only JPG, JPEG, PNG files are allowed.');</script>";
         $uploadOk = 0;
-    } 
-
+    }
     if ($uploadOk == 0) {
-        $result .= "<script>alert('Sorry, your file was not uploaded.');</script>";
+        $result = "<script>alert('Sorry, your file was not uploaded.');</script>";
     } else {
-        if (move_uploaded_file($photofile['tmp_name'], $target_file)) {
+        if (move_uploaded_file($_FILES["shoes_img"]["tmp_name"], $target_file)) {
             $result = 1;
+            
         } else {
             $result = "<script>alert('Sorry, there was an error uploading your file.');</script>";
         }
     }
-
     return $result;
 }

@@ -2,35 +2,6 @@
 require 'controller.php';
 session_start();
 cekLogin();
-
-if(isset($_POST['create'])){
-  $conn = bukaKoneksiDB();
-  $conn;
-  $shoes_name = $_POST['shoes_name'];
-  $shoes_size = $_POST['shoes_size'];
-  $shoes_price = $_POST['shoes_price'];
-  $shoes_brand = $_POST['shoes_brand']; // Import the necessary dependencies
-
-  $uploadImage = 1;
-  $image_location = "";
-  if(isset($_FILES['shoes_img'])){
-      $shoes_img = $_FILES['shoes_img'];
-      $foldername = "image";
-      $uploadImage = uploadImage($foldername, $shoes_img); // Add the missing uploadImage function
-      $image_location = $foldername."/".htmlspecialchars(basename($shoes_img["name"]));
-      if($image_location){
-        echo "<script>alert('Image Uploaded Successfully!');</script>";
-      }
-  }
-
-  if($uploadImage == 1){
-    createShoes($shoes_name, $shoes_size, $image_location, $shoes_price, $shoes_brand);
-  }else{
-      echo $uploadImage;
-  }
-  tutupKoneksiDB($conn);
-  echo "<script>alert('Shoes Added Successfully!');</script>";
-}
 ?>
 
 
@@ -51,6 +22,29 @@ if(isset($_POST['create'])){
 </head>
 <!--Header-->
 <body class="font-rubik"> 
+  <?php
+  if (isset($_POST['create'])) {
+    $shoes_name = $_POST['shoes_name'];
+    $shoes_brand = $_POST['shoes_brand'];
+    $shoes_price = $_POST['shoes_price'];
+    $shoes_size = $_POST['shoes_size'];
+
+    $uploadImage = 1;
+    $image_location = "";
+    if(isset($_FILES["shoes_img"]['name'])){
+      $shoes_img = $_FILES['shoes_img']['name'];
+      $foldername = 'Image';
+      $uploadImage = uploadImage($foldername, $shoes_img);
+      $image_location = $foldername."/".htmlspecialchars(basename($shoes_img));
+    }
+
+    if($uploadImage == 1){
+      createShoes($shoes_name, $shoes_brand, $shoes_price, $shoes_size, $image_location);
+    }else{
+      echo $uploadImage;
+    }
+  }
+  ?>
     <header class="bg-transparent absolute top-0 left-0 w-full flex items-center z-10">
       <div class="mx-auto w-full px-10 pb-6 mb-8 bg-gray-50 border-b-2">
         <div class="flex items-center justify-between relative">
