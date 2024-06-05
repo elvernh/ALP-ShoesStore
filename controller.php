@@ -106,7 +106,7 @@ function getAllReview(){
 
 function createShoes($shoes_name, $shoes_brand, $shoes_price, $shoes_size, $image_location){
     $conn = bukaKoneksiDB();
-    $sql =  "INSERT TO 'shoes' ('shoes_id','shoes_name','shoes_size ','shoes_img','shoes_brand','shoes_price') VALUES (NULL,'$shoes_name',$shoes_size','$image_location','$shoes_brand','$shoes_price');"; 
+    $sql = "INSERT INTO shoes (shoes_id, shoes_name, shoes_size, shoes_img, shoes_brand, shoes_price) VALUES (NULL, '$shoes_name', '$shoes_size', '$image_location', '$shoes_brand', '$shoes_price');";
     $result = mysqli_query($conn, $sql); 
     if($result ==1){
         $result = mysqli_insert_id($conn);
@@ -121,7 +121,9 @@ function uploadImage($foldername, $photoFile){
     $uploadOk = 1;
     $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION)); 
 
+    echo $imageFileType;
     $result = 1;
+    $errorMessage = 0;
     if(isset($_POST["create"])) {
         $check = getimagesize($_FILES["shoes_img"]["tmp_name"]);
         if($check !== false) {
@@ -129,22 +131,36 @@ function uploadImage($foldername, $photoFile){
         } else {
             $result = "<script>alert('File is not an image.');</script>";
             $uploadOk = 0;
+            $errorMessage = 1;
         }
     }
     if (file_exists($target_file)) {
         $result = "<script>alert('Sorry, file already exists.');</script>";
         $uploadOk = 0;
+        $errorMessage = 2;
     }
-    if ($_FILES["shoes_img"]["size"] > 500000) {
+    if ($_FILES["shoes_img"]["size"] > 5000000) {
         $result = "<script>alert('Sorry, your file is too large.');</script>";
         $uploadOk = 0;
+        $errorMessage = 3;
     }
     if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
         $result = "<script>alert('Sorry, only JPG, JPEG, PNG files are allowed.');</script>";
         $uploadOk = 0;
+        $errorMessage = 4;
     }
     if ($uploadOk == 0) {
         $result = "<script>alert('Sorry, your file was not uploaded.');</script>";
+        if($errorMessage == 1){
+            $result = "<script>alert('File is not an image.');</script>";
+        }else if($errorMessage == 2){ 
+            $result = "<script>alert('Sorry, file already exists.');</script>";
+        }
+        else if($errorMessage == 3){ 
+            $result = "<script>alert('Sorry, your file is too large.');</script>";
+        }else if($errorMessage == 4){ 
+            $result = "<script>alert('Sorry, only JPG, JPEG, PNG files are allowed.');</script>";
+        }
     } else {
         if (move_uploaded_file($_FILES["shoes_img"]["tmp_name"], $target_file)) {
             $result = 1;
