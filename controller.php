@@ -198,3 +198,16 @@ function getReviewDetail($shoes_id){
     tutupKoneksiDB($conn);
     return $result;
 }
+
+function getDisplayshoe($shoes_id){
+    $conn = bukaKoneksiDB();
+    $sql = "SELECT * FROM review WHERE shoes_id = $shoes_id";
+    $result = null;
+    $alldata = mysqli_query($conn, $sql);
+
+    if ($alldata != null) {
+        $result = mysqli_fetch_assoc($alldata);
+    }
+    tutupKoneksiDB($conn);
+    return $result;
+}

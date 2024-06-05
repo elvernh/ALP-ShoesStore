@@ -81,5 +81,22 @@
 
     </header>
 
+    <section class="pt-44 px-4">
+        <div class="container mx-auto">
+        <h1 class="text-3xl font-semibold mb-10">My Review List</h1>
+        <div class="wrapper shadow-lg lg:justify-between lg:flex  h-[26rem] lg:h-40 rounded-lg mb-5 border-2 border-black">
+            <img class="w-full lg:w-auto lg:h-full h-60 rounded-t-lg lg:border-r-2 lg:border-b-none border-b-2 border-black lg:rounded-r-none lg:rounded-l-lg object-cover" src="Images/Photos/Red Nike Shoes.jpeg">
+            <div class="ml-5 lg:ml-0 lg:mt-3 flex lg:flex-row justify-around w-full">
+                <div class="my-auto mt-[4rem] lg:mt-8">
+                    <h1 class="text-lg font-semibold lg:text-2xl">Shoe Name</h1>
+                    <p class="font-light text-sm">Review Goes Here</p>
+                </div>
+                <ul class="my-auto flex justify-center lg:justify-end mt-20 lg:mt-10 lg:mr-10 space-x-4 lg:space-x-6">
+                    <li class="mr-4 lg:text-xl lg:mr-5 font-semibold duration-300 hover:text-2xl hover:duration-500"><a href="#">Edit</a></li>
+                    <li class="lg:text-xl font-semibold duration-300 hover:text-2xl hover:duration-500"><a href="#">Delete</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
   </body>

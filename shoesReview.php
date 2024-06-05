@@ -6,19 +6,21 @@ cekLogin();
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Shoes Review Page</title>
-    <link rel="shortcut icon" type="x-icon" href="Images/Logo/Group 1.png" />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <script src="scriptHome.js" defer></script>
-    <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shoes Review Page</title>
+  <link rel="shortcut icon" type="x-icon" href="Images/Logo/Group 1.png" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <script src="scriptHome.js" defer></script>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body>
-    <header class="bg-transparent absolute top-0 left-0 w-full flex items-center z-10">
+<header class="bg-transparent absolute top-0 left-0 w-full flex items-center z-10">
         <div class="mx-auto w-full px-10 pb-6 mb-8 bg-gray-50 border-b-2">
           <div class="flex items-center justify-between relative">
             <div class="flex items-center w-20">
@@ -36,11 +38,11 @@ cekLogin();
                     <a href="homepage.php" class="text-lg py-2 mx-8">Home</a>
                   </li>
                   <li class="group">
-                    <a href="addReview.php" class="text-lg py-2 mx-8">Add Review</a>
+                    <a href="addreview.php" class="text-lg py-2 mx-8">Add Review</a>
                   </li>
                   <li class="group">
-                    <a href="addshoes.php" class="text-lg py-2 mx-8">Add Shoes</a>
-                  </li>
+                  <a href="addshoes.php" class="text-lg py-2 mx-8">Add Shoes</a>
+                </li>
                   <li class="group">
                     <a href="myreview.php" class="text-lg py-2 mx-8">My Review</a>
                   </li>
@@ -51,7 +53,8 @@ cekLogin();
                       echo '<li><a href="logout.php" class="text-lg">Log Out</a></li>';
                     }else{
                       echo '<li><a href="login.php" class="text-lg">Login/Register</a></li>';
-                    }                  
+                    }
+
                     ?>
                     <li>
                       <form class="search">
@@ -63,15 +66,7 @@ cekLogin();
                       </form>
                       <a href="#"><p class="searchText hidden">Search</p></a>
                     </li>
-                    <li><a href="#"><svg class="heart" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M15.3124 26.4646L14.9374 26.3021C9.04995 23.6896 2.78745 18.5646 2.81245 11.9896C2.82495 8.11461 4.97495 5.00211 8.41245 3.90211C11.05 3.05211 13.4624 3.68961 15.3124 5.70211C17.1624 3.68961 19.5749 3.05211 22.2124 3.90211C25.6499 5.01461 27.7999 8.11461 27.8124 12.0021C27.8499 18.5646 21.5749 23.6896 15.6874 26.3021L15.3124 26.4646ZM10.625 5.40211C10.1 5.40211 9.56245 5.48961 8.98745 5.67711C5.82495 6.68961 4.68745 9.61461 4.68745 12.0021C4.66245 17.5271 10.3125 22.0896 15.3124 24.4021C20.3124 22.0896 25.9624 17.5271 25.9374 12.0021C25.9374 9.61461 24.7874 6.70211 21.6374 5.67711C19.3999 4.95211 17.5374 5.65211 16.0874 7.72711L15.3124 8.82711L14.5374 7.72711C13.4624 6.17711 12.15 5.38961 10.625 5.38961V5.40211Z" fill="black"/>
-                      </svg><p class="heartText hidden">Favourite</p>
-                      </a></li>
-                      <li><a href=""><svg class="shop" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M7.5 2.5L3.75 7.5V25C3.75 25.663 4.01339 26.2989 4.48223 26.7678C4.95107 27.2366 5.58696 27.5 6.25 27.5H23.75C24.413 27.5 25.0489 27.2366 25.5178 26.7678C25.9866 26.2989 26.25 25.663 26.25 25V7.5L22.5 2.5H7.5Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M3.75 7.5H26.25" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M20 12.5C20 13.8261 19.4732 15.0979 18.5355 16.0355C17.5979 16.9732 16.3261 17.5 15 17.5C13.6739 17.5 12.4021 16.9732 11.4645 16.0355C10.5268 15.0979 10 13.8261 10 12.5" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg><p class="shopText hidden">Wish List</p></a></li>
+                    
                   </div>
                 </ul>
               </nav>
@@ -80,29 +75,48 @@ cekLogin();
           </div>
         </div>
       </header>
-      <section class="pt-[12rem] lg:pt-[16rem] mb-40">
-        <div class="container mx-auto px-8 lg:px-4">
-          <div class="flex flex-wrap items-center shadow-xl rounded-lg py-12 lg:py-0">
-            <div class="w-full lg:w-1/2">
-              <?php
-              echo '<img class="w-full h-full object-cover drop-shadow-2xl rounded-t-lg lg:rounded-r-none lg:rounded-l-lg lg:mt-0 mt-[-50px]" src="'.'">';
-              ?>
+      
+  <section class="pt-[12rem] lg:pt-[16rem] mb-40">
+    <div class="container mx-auto px-8 lg:px-4">
+      <div class="flex flex-wrap items-center shadow-xl rounded-lg py-12 lg:py-0">
+        <div class="w-full lg:w-1/2">
 
-            </div>
-            <div class="block w-full self-center px-4 lg:px-8 lg:w-1/2">
-              <div class="relative mt-10 lg:mt-0">
-                <h1 class="text-2xl font-semibold mb-2">Write a Review of </h1>
-                <form>
-                  <textarea name="review" class="py-3 px-2 w-full h-[8rem] lg:h-[12rem] rounded-lg border-[1px] border-black"></textarea>
-                  <div class="flex mt-4">
-                    <button class="bg-white px-6 py-[10px] border-[2px] rounded-lg border-blackrounded-lg duration-500 hover:bg-slate-600 hover:duration-300 hover:text-white" type="submit" >Submit</button>
-                  </div>
-                </form>
+          <?php
+          $conn = mysqli_connect("localhost", "root", "", "noairjordan");
+          if (!$conn) {
+            die("Connection failed: " . mysqli_connect_error());
+          }
+          $sql = 'SELECT shoes_id, shoes_name, shoes_img FROM shoes';
+
+          $result = mysqli_query($conn, $sql);
+
+          if (mysqli_num_rows($result) > 0) {
+            $row = $result->fetch_assoc();
+            echo '<a href="shoeReview.php?shoe_id=' . htmlspecialchars($row['shoes_id'], ENT_QUOTES, 'UTF-8') . '">';
+            echo '<img class="w-full h-full object-cover drop-shadow-2xl rounded-t-lg lg:rounded-r-none lg:rounded-l-lg lg:mt-0 mt-[-50px]" src="' . htmlspecialchars($row['shoes_img'], ENT_QUOTES, 'UTF-8') . '" alt="' . htmlspecialchars($row['shoes_name'], ENT_QUOTES, 'UTF-8') . '">';
+            echo '</a>';
+          } else {
+            echo "0 results";
+          }
+
+          ?>
+
+        </div>
+        <div class="block w-full self-center px-4 lg:px-8 lg:w-1/2">
+          <div class="relative mt-10 lg:mt-0">
+            <h1 class="text-2xl font-semibold mb-2">Write a Review of </h1>
+            <form>
+              <textarea name="review" class="py-3 px-2 w-full h-[8rem] lg:h-[12rem] rounded-lg border-[1px] border-black"></textarea>
+              <div class="flex mt-4">
+                <button class="bg-white px-6 py-[10px] border-[2px] rounded-lg border-blackrounded-lg duration-500 hover:bg-slate-600 hover:duration-300 hover:text-white" type="submit">Submit</button>
               </div>
-            </div>
+            </form>
           </div>
         </div>
-      </section>
-      
+      </div>
+    </div>
+  </section>
+
 </body>
+
 </html>
