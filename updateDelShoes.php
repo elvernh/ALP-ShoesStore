@@ -79,14 +79,14 @@ cekLogin();
       <section class="list pt-[14rem]">
         
         <div class="container mx-auto px-8 lg:px-4">
-          <h1 class="text-3xl flex justify-center font-semibold mb-12">Click on a shoe to review</h1>
+          <h1 class="text-3xl flex justify-center font-semibold mb-12">Click on a shoe to update / delete</h1>
             <div class="grid grid-cols-2 gap-5 lg:grid-cols-5">
               <?php
               $all = getAllShoes();
 
               foreach($all as $shoe) {
                 echo '<div class="shadow-xl h-[18rem] ro unded-lg block items-center justify-center lg:h-[20rem] duration-500 hover:duration-300 hover:-translate-y-10">
-                <a href="shoesReview.php?shoes_id='.$shoe['shoes_id'].'"><img class="rounded-t-lg w-full h-[13rem] lg:h-[15em]" src="'.$shoe['shoes_img'].'">
+                <a href="shoesUD.php?shoes_id='.$shoe['shoes_id'].'"><img class="rounded-t-lg w-full h-[13rem] lg:h-[15em]" src="'.$shoe['shoes_img'].'">
                   <p class="text-lg text-center font-semibold justify-center mt-3 lg:mt-2">'.$shoe['shoes_name'].'</p>
                   <p class="text-sm text-center font-light justify-center mt-1">'.$shoe['shoes_brand'].'</p>
                 </a></div>';

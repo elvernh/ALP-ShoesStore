@@ -1,4 +1,8 @@
-
+<?php
+require_once 'controller.php';
+session_start();
+cekLogin();
+?>
 
 
 <!DOCTYPE html>
@@ -43,6 +47,9 @@
                 <li class="group">
                   <a href="myreview.php" class="text-lg py-2 mx-8">My Review</a>
                 </li>
+                <li class="group">
+                    <a href="updateDelShoes.php" class="text-lg py-2 mx-8">Update / Delete Shoes</a>
+                  </li>
                 <div class="block lg:flex lg:ml-14">
               
                   <?php
@@ -62,15 +69,7 @@
                     </form>
                     <a href="#"><p class="searchText hidden">Search</p></a>
                   </li>
-                  <li><a href="#"><svg class="heart" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M15.3124 26.4646L14.9374 26.3021C9.04995 23.6896 2.78745 18.5646 2.81245 11.9896C2.82495 8.11461 4.97495 5.00211 8.41245 3.90211C11.05 3.05211 13.4624 3.68961 15.3124 5.70211C17.1624 3.68961 19.5749 3.05211 22.2124 3.90211C25.6499 5.01461 27.7999 8.11461 27.8124 12.0021C27.8499 18.5646 21.5749 23.6896 15.6874 26.3021L15.3124 26.4646ZM10.625 5.40211C10.1 5.40211 9.56245 5.48961 8.98745 5.67711C5.82495 6.68961 4.68745 9.61461 4.68745 12.0021C4.66245 17.5271 10.3125 22.0896 15.3124 24.4021C20.3124 22.0896 25.9624 17.5271 25.9374 12.0021C25.9374 9.61461 24.7874 6.70211 21.6374 5.67711C19.3999 4.95211 17.5374 5.65211 16.0874 7.72711L15.3124 8.82711L14.5374 7.72711C13.4624 6.17711 12.15 5.38961 10.625 5.38961V5.40211Z" fill="black"/>
-                    </svg><p class="heartText hidden">Favourite</p>
-                    </a></li>
-                    <li><a href=""><svg class="shop" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M7.5 2.5L3.75 7.5V25C3.75 25.663 4.01339 26.2989 4.48223 26.7678C4.95107 27.2366 5.58696 27.5 6.25 27.5H23.75C24.413 27.5 25.0489 27.2366 25.5178 26.7678C25.9866 26.2989 26.25 25.663 26.25 25V7.5L22.5 2.5H7.5Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                      <path d="M3.75 7.5H26.25" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                      <path d="M20 12.5C20 13.8261 19.4732 15.0979 18.5355 16.0355C17.5979 16.9732 16.3261 17.5 15 17.5C13.6739 17.5 12.4021 16.9732 11.4645 16.0355C10.5268 15.0979 10 13.8261 10 12.5" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg><p class="shopText hidden">Wish List</p></a></li>
+                  
                 </div>
               </ul>
             </nav>

@@ -47,6 +47,9 @@ session_start();
                   <li class="group">
                     <a href="myreview.php" class="text-lg py-2 mx-8">My Review</a>
                   </li>
+                  <li class="group">
+                    <a href="updateDelShoes.php" class="text-lg py-2 mx-8">Update / Delete Shoes</a>
+                  </li>
                   <div class="block lg:flex lg:ml-14">
                 
                     <?php
@@ -102,16 +105,23 @@ session_start();
         <h2 class="text-2xl font-bold mb-4">New Reviews</h2>
         <div class="wrapper snap-x max-h-[220px] flex overflow-x-auto lg:max-h-[520px]">
           <?php
-          $all = getAllShoes();
-          $counter = 0;
-          while ($row = mysqli_fetch_assoc($all)) {
-            if($counter >= 5){
-              break;
-            }
-            echo '<div class="rounded-lg item snap-center min-w-[200px] h-[200px] align-center bg-white border-2 mx-2 lg:min-w-[500px] lg:h-[500px]">
-            <a href="shoesReview.php?id=' . $row['shoes_id'] . '"><img class="h-full rounded-lg" src="' . $row['shoes_img'] . '"></a></div>';
-            $counter++;
+          $conn = mysqli_connect("localhost", "root", "", "noairjordan");
+          if (!$conn) {
+            die("Connection failed: " . mysqli_connect_error());
           }
+          $sql = 'SELECT shoes_id, shoes_name, shoes_img FROM shoes LIMIT 5';
+
+          $result = mysqli_query($conn, $sql);
+
+          if (mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
+              echo '<div class="rounded-lg item snap-center min-w-[200px] h-[200px] align-center bg-white border-2 mx-2 lg:min-w-[500px] lg:h-[500px]">
+              <a href="shoesReview.php?shoes_id=' . $row['shoes_id'] . '"><img class="h-full rounded-lg" src="' . $row['shoes_img'] . '"></a></div>';
+            }
+          } else {
+            echo "0 results";
+          }
+          mysqli_close($conn);
           ?>
         </div>
       </div>

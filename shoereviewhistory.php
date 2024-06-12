@@ -1,3 +1,10 @@
+<?php
+session_start();
+require 'controller.php';
+include_once("controller.php");
+cekLogin();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,6 +44,9 @@
                 </li>
                   <li class="group">
                     <a href="myreview.php" class="text-lg py-2 mx-8">My Review</a>
+                  </li>
+                  <li class="group">
+                    <a href="updateDelShoes.php" class="text-lg py-2 mx-8">Update / Delete Shoes</a>
                   </li>
                   <div class="block lg:flex lg:ml-14">
                 

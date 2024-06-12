@@ -20,6 +20,14 @@ cekLogin();
 </head>
 
 <body>
+  <?php
+  if (isset($_POST['review'])) {
+    $review = $_POST['review'];
+    $user_id = $_SESSION['user_id'];
+    $shoes_id = $_POST['shoes_id'];
+    createReview(NULL, $user_id, $shoes_id, $review);
+  }
+  ?>
 <header class="bg-transparent absolute top-0 left-0 w-full flex items-center z-10">
         <div class="mx-auto w-full px-10 pb-6 mb-8 bg-gray-50 border-b-2">
           <div class="flex items-center justify-between relative">
@@ -45,6 +53,9 @@ cekLogin();
                 </li>
                   <li class="group">
                     <a href="myreview.php" class="text-lg py-2 mx-8">My Review</a>
+                  </li>
+                  <li class="group">
+                    <a href="updateDelShoes.php" class="text-lg py-2 mx-8">Update / Delete Shoes</a>
                   </li>
                   <div class="block lg:flex lg:ml-14">
                 
@@ -86,13 +97,13 @@ cekLogin();
           if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
           }
-          $sql = 'SELECT shoes_id, shoes_name, shoes_img FROM shoes WHERE shoes_id = ' . $_GET['shoes_id'] . ' LIMIT 1';
+          $sql = 'SELECT shoes_id, shoes_name, shoes_img FROM shoes WHERE shoes_id = ' . $_GET['shoes_id'] . ' LIMIT 5';
 
           $result = mysqli_query($conn, $sql);
 
           if (mysqli_num_rows($result) > 0) {
             $row = $result->fetch_assoc();
-            echo '<a href="shoeReview.php?shoe_id=' . htmlspecialchars($row['shoes_id'], ENT_QUOTES, 'UTF-8') . '">';
+            echo '<a href="shoeReview.php?shoes_id=' . htmlspecialchars($row['shoes_id'], ENT_QUOTES, 'UTF-8') . '">';
             echo '<img class="w-full h-full object-cover drop-shadow-2xl rounded-t-lg lg:rounded-r-none lg:rounded-l-lg lg:mt-0 mt-[-50px]" src="' . htmlspecialchars($row['shoes_img'], ENT_QUOTES, 'UTF-8') . '" alt="' . htmlspecialchars($row['shoes_name'], ENT_QUOTES, 'UTF-8') . '">';
             echo '</a>';
           } else {
@@ -102,10 +113,15 @@ cekLogin();
           ?>
 
         </div>
+
+        <!--Review text area-->
         <div class="block w-full self-center px-4 lg:px-8 lg:w-1/2">
           <div class="relative mt-10 lg:mt-0">
-            <h1 class="text-2xl font-semibold mb-2">Write a Review of </h1>
-            <form>
+            <?php
+            echo '<h1 class="text-2xl font-semibold mb-2">' . 'Write a Review of ' . htmlspecialchars($row['shoes_name'], ENT_QUOTES, 'UTF-8') . '</h1>';
+            ?>
+            <form method="POST" action="shoesReview.php">
+            <input type="hidden" name="shoes_id" value="<?php echo htmlspecialchars($row['shoes_id'], ENT_QUOTES, 'UTF-8'); ?>">
               <textarea name="review" class="py-3 px-2 w-full h-[8rem] lg:h-[12rem] rounded-lg border-[1px] border-black"></textarea>
               <div class="flex mt-4">
                 <button class="bg-white px-6 py-[10px] border-[2px] rounded-lg border-blackrounded-lg duration-500 hover:bg-slate-600 hover:duration-300 hover:text-white" type="submit">Submit</button>

@@ -113,7 +113,7 @@ function getAllReview(){
 }
 
 function createShoes($shoes_name, $shoes_brand, $shoes_price, $shoes_size, $image_location){
-    $conn = bukaKoneksiDB();
+    $conn = bukaKoneksiDB();    
     $sql = "INSERT INTO shoes (shoes_id, shoes_name, shoes_size, shoes_img, shoes_brand, shoes_price) VALUES (NULL, '$shoes_name', '$shoes_size', '$image_location', '$shoes_brand', '$shoes_price');";
     $result = mysqli_query($conn, $sql); 
     if($result ==1){
@@ -122,6 +122,21 @@ function createShoes($shoes_name, $shoes_brand, $shoes_price, $shoes_size, $imag
     tutupKoneksiDB($conn);
     return $result;
 }
+
+function shoesWithID($id){
+    $result = NULL;
+    $conn = bukaKoneksiDB();
+    $sql = "SELECT * FROM `shoes` WHERE shoes.shoes_id = shoes_id AND shoes_id=" . $id;
+    $allData = mysqli_query($conn, $sql);
+
+    if ($allData != NULL) {
+        $result = $allData->fetch_assoc();
+    }
+    tutupKoneksiDB($conn);
+    return $result;
+}
+
+
 
 function uploadImage($foldername, $photoFile){
     $target_dir = $foldername."/";
@@ -181,10 +196,28 @@ function uploadImage($foldername, $photoFile){
     return $result;
 }
 
-function createReview($review_id, $shoes_id, $user_id, $review){
+function deleteSepatu($deleteID){
     $conn = bukaKoneksiDB();
-    $sql = "INSERT INTO review (review_id, user_id, shoes_id, review) VALUES (NULL,'$review_id', '$shoes_id', '$user_id', '$review');";
-    $result = mysqli_query($conn, $sql); 
+    $sql = "DELETE FROM shoes WHERE shoes_id = " . $deleteID;
+    $result = mysqli_query($conn, $sql);
+
+    // Check if the query executed successfully
+    if ($result) {
+        tutupKoneksiDB($conn);
+        return $result; // Success
+    } else {
+        // If there's an error, return the error message
+        $error = mysqli_error($conn);
+        tutupKoneksiDB($conn);
+        return $error; // Error message
+    }
+}
+
+
+function createReview($shoes_id, $user_id, $review){
+    $conn = bukaKoneksiDB();
+    $sql = "INSERT INTO review (review_id, shoes_id, user_id, reff) VALUES (NULL, '$shoes_id', '$user_id', '$review');";
+    $result = mysqli_query($conn, $sql);
     if($result ==1){
         $result = mysqli_insert_id($conn);
     }
@@ -192,9 +225,17 @@ function createReview($review_id, $shoes_id, $user_id, $review){
     return $result;
 }
 
+function getReview($shoes_id){
+    $conn = bukaKoneksiDB();
+    $sql = "SELECT * FROM review WHERE shoes_id = $shoes_id";
+    $result = mysqli_query($conn, $sql);
+    tutupKoneksiDB($conn);
+    return $result;
+}
+
 function getReviewDetail($shoes_id){
     $conn = bukaKoneksiDB();
-    $sql = "SELECT * FROM shoes WHERE shoes_id = $shoes_id";
+    $sql = "SELECT * FROM shoes INNER JOIN review ON shoes.shoes_id = review.shoes_id WHERE shoes.shoes_id = $shoes_id";
     $result = mysqli_query($conn, $sql);
     tutupKoneksiDB($conn);
     return $result;
@@ -208,6 +249,33 @@ function getDisplayshoe($shoes_id){
 
     if ($alldata != null) {
         $result = mysqli_fetch_assoc($alldata);
+    }
+    tutupKoneksiDB($conn);
+    return $result;
+}
+
+function updateShoes($updatedID, $shoes_name, $shoes_brand, $shoes_price, $shoes_size, $image_location){
+    $conn = bukaKoneksiDB();
+    $sql = "UPDATE shoes SET shoes_name = '$shoes_name',
+                shoes_brand = '$shoes_brand',
+                shoes_price = '$shoes_price', 
+                shoes_size = '$shoes_size',
+                shoes_img = '$image_location' 
+            WHERE shoes_id = $updatedID";
+    $result = mysqli_query($conn, $sql);
+    tutupKoneksiDB($conn);
+    return $result;
+}
+
+function getShoesWithID($shoes_id)
+{
+    $result = null;
+    $conn = bukaKoneksiDB();
+    $sql = "SELECT * FROM shoes WHERE shoes_id=" . $shoes_id;
+    $allData = mysqli_query($conn, $sql);
+
+    if ($allData != null && $allData->num_rows > 0) {
+        $result = $allData->fetch_assoc();
     }
     tutupKoneksiDB($conn);
     return $result;
